@@ -24,8 +24,8 @@ const productPillars = [
 ]
 
 const ucaasCapabilities = [
-  { title: "Video Meetings",          href: "/features/video-meetings" },
   { title: "Team Chat",               href: "/features/team-chat" },
+  { title: "Video Meetings",          href: "/features/video-meetings" },
   { title: "Toll-Free Numbers",       href: "/phone-numbers/toll-free" },
   { title: "Business Phone Number",   href: "/phone-numbers/business" },
   { title: "Second Phone Number",     href: "/phone-numbers/second-number" },
@@ -36,14 +36,14 @@ const ucaasCapabilities = [
 ]
 
 const contactCenterAI = [
-  { title: "Omnichannel Contact Center", href: "/voice/contact-center" },
+  { title: "SMS API",                    href: "/messaging/sms-api" },
+  { title: "Call Recording",             href: "/features/call-recording" },
+  { title: "AI Agent Assist",            href: "/voice/contact-center" },
+  { title: "AI Supervisor Tools",        href: "/features/supervisor" },
   { title: "Auto-Attendant & IVR",       href: "/features/auto-attendant" },
   { title: "AI Intelligent Routing",     href: "/features/routing" },
-  { title: "Call Recording",             href: "/features/call-recording" },
+  { title: "Omnichannel Contact Center", href: "/voice/contact-center" },
   { title: "AI Conversation Intelligence",  href: "/features/conv-intelligence" },
-  { title: "AI Supervisor Tools",        href: "/features/supervisor" },
-  { title: "SMS API",                    href: "/messaging/sms-api" },
-  { title: "AI Agent Assist",            href: "/voice/contact-center" },
 ]
 
 /* ─── Voice data (kept for mobile) ──────────────────────────── */
