@@ -1,6 +1,7 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, NextStepBand } from "@/components/page-parts"
+import { PageHero, SectionHeading } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { PhoneCall, Network, Building2, Headphones, PhoneIncoming, ArrowRight, Shield } from "lucide-react"
 
@@ -101,10 +102,7 @@ export default function VoiceHub() {
       </section>
 
       <Faq />
-      <NextStepBand
-        primary={{ label: "Explore voice termination", href: "/voice/termination" }}
-        secondary={{ label: "See pricing", href: "/pricing" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

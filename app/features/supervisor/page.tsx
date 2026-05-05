@@ -1,6 +1,7 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Users, Eye, Mic, PhoneCall, BarChart2, Bell } from "lucide-react"
 
@@ -165,12 +166,7 @@ export default function SupervisorPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Build a better team, one call at a time"
-        sub="Supervisor Tools on Professional and Enterprise. 14-day free trial."
-        primary={{ label: "Start Free Trial", href: "/pricing" }}
-        secondary={{ label: "See all plans", href: "/pricing" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

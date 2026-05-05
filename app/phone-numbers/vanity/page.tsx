@@ -7,8 +7,8 @@ import {
   StatBar,
   FeatureSplit,
   ImageSlot,
-  NextStepBand,
 } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 
 export const metadata: Metadata = {
@@ -55,7 +55,7 @@ export default function VanityNumberPage() {
         eyebrow="Vanity Phone Numbers"
         h1="The only phone number your customers will remember."
         sub="1-800 vanity numbers that spell your brand. Built for businesses that advertise."
-        trustItems={["Custom patterns", "Toll-free + local vanity", "STIR/SHAKEN", "All 800 prefixes"]}
+        trustItems={["Custom patterns", "Toll-free", "STIR/SHAKEN", "All 800 prefixes"]}
         primaryCta={{ label: "Start 14-day free trial", href: "/pricing" }}
         secondaryCta={{ label: "See pricing", href: "/pricing" }}
         image={{
@@ -177,12 +177,7 @@ export default function VanityNumberPage() {
       </section>
 
       <Faq />
-      <NextStepBand
-        heading="Find the number your customers will remember."
-        sub="We search every prefix and pattern — toll-free and local."
-        primary={{ label: "Start 14-day free trial", href: "/pricing" }}
-        secondary={{ label: "Explore business numbers", href: "/phone-numbers/business" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

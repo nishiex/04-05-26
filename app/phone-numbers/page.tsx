@@ -1,8 +1,9 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
 import {
-  PageHero, SectionHeading, RelatedCards, NextStepBand,
+  PageHero, SectionHeading, RelatedCards,
 } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import {
   Globe, MapPin, Sparkles, Briefcase, Smartphone, ArrowRight, Check,
@@ -247,12 +248,7 @@ export default function PhoneNumbersHub() {
 
       <Faq />
       <RelatedCards heading="Related pages" cards={RELATED} />
-      <NextStepBand
-        heading="Five number types. One 14-day trial."
-        sub="Provision your first number in minutes. No hardware, no commitment."
-        primary={{ label: "Start free trial", href: "/pricing" }}
-        secondary={{ label: "See pricing", href: "/pricing" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

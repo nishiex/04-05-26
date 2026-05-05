@@ -10,8 +10,8 @@ import {
   ImageSlot,
   DarkBand,
   RelatedCards,
-  NextStepBand,
 } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { MapPin, TrendingUp, Globe, Layers } from "lucide-react"
 
@@ -214,12 +214,7 @@ export default function LocalNumberPage() {
 
       <Faq />
       <RelatedCards heading="Explore other number types" cards={RELATED} />
-      <NextStepBand
-        heading="Your next market is one local number away."
-        sub="Any area code. Any device. Activate in minutes."
-        primary={{ label: "Start 14-day free trial", href: "/pricing" }}
-        secondary={{ label: "Explore vanity numbers", href: "/phone-numbers/vanity" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

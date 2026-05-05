@@ -162,7 +162,7 @@ export function SectionHeading({
           <p className="text-[10px] font-mono font-bold tracking-[2.5px] uppercase text-accent">{eyebrow}</p>
         </div>
       )}
-      <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 text-balance leading-tight">{h2}</h2>
+      <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#48cae0] text-balance leading-tight">{h2}</h2>
       {sub && <p className="mt-4 text-base text-gray-500 leading-relaxed max-w-[580px]">{sub}</p>}
     </div>
   )

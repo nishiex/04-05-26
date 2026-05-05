@@ -1,7 +1,8 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Shield, Landmark, Phone, MessageSquare, BarChart2, Lock } from "lucide-react"
 
@@ -167,12 +168,7 @@ export default function FinancePage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Built for the compliance demands of financial services"
-        sub="14-day free trial. SOC 2 available on Enterprise."
-        primary={{ label: "Start Free Trial", href: "/pricing" }}
-        secondary={{ label: "Talk to sales", href: "/contact" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

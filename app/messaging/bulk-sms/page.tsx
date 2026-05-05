@@ -1,6 +1,7 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Send, ShieldCheck, BarChart2, Sliders, RefreshCw, MessageSquare } from "lucide-react"
 
@@ -197,12 +198,7 @@ export default function BulkSmsPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Start your first campaign today."
-        sub="TCR compliance handled. 98% open rates. 14-day free trial."
-        primary={{ label: "Start free trial", href: "/pricing" }}
-        secondary={{ label: "See SMS Gateway", href: "/messaging/sms-gateway" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

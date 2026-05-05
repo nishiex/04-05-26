@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { NextStepBand } from "@/components/page-parts"
 import { Faq } from "@/components/faq"
+import { FinalCta } from "@/components/final-cta"
 
 export const metadata: Metadata = {
   title: "SMS Gateway · Business Messaging That Gets Read | Twiching",
@@ -178,10 +178,7 @@ export default function SmsGatewayPage() {
       <Faq />
 
       {/* CTA */}
-      <NextStepBand
-        primary={{ label: "Start free trial", href: "/pricing" }}
-        secondary={{ label: "Explore SMS API", href: "/messaging/sms-api" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

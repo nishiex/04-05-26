@@ -18,6 +18,7 @@ import { Faq } from "@/components/faq"
 import { AnnouncementBar } from "@/components/announcement-bar"
 import { MegaNav } from "@/components/mega-nav"
 import { Footer } from "@/components/footer"
+import { FinalCta } from "@/components/final-cta"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -171,7 +172,7 @@ export function VirtualNumberPage() {
         <ComparisonSection />
         <Faq items={FAQS} heading="Virtual number questions, answered." />
         <RelatedSection />
-        <CtaSection />
+        <FinalCta />
       </main>
       <Footer />
     </div>
@@ -237,13 +238,16 @@ function HeroSection() {
             </p>
 
             <div className="vn-cta flex flex-wrap items-center gap-3 mb-8">
-              <PrimaryButton href="/pricing">Start 14-day free trial</PrimaryButton>
               <motion.a
-                href="/pricing"
-                whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-slate-500 hover:text-accent transition-colors"
+                href="/contact"
+                whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                className="group inline-flex items-center gap-2 bg-accent text-white text-[15px] font-semibold font-mono pl-7 pr-3 py-2 rounded-full hover:bg-[color:var(--accent-dark)] shadow-[0_8px_24px_-6px_rgba(26,188,217,0.45)]"
               >
-                See pricing <ChevronRight aria-hidden="true" className="h-4 w-4" strokeWidth={2} />
+                Talk to sales
+                <span aria-hidden="true" className="grid place-items-center h-8 w-8 rounded-full bg-white/15 ring-1 ring-inset ring-white/20 transition-transform group-hover:translate-x-0.5">
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
+                </span>
               </motion.a>
             </div>
 
@@ -265,15 +269,6 @@ function HeroSection() {
               ))}
             </div>
 
-            {/* Stats */}
-            <dl className="flex flex-wrap gap-7">
-              {STATS.map(({ value, label }) => (
-                <div key={label} className="vn-stat">
-                  <dt className="font-serif text-[26px] font-bold leading-none text-slate-900">{value}</dt>
-                  <dd className="text-[10px] font-mono mt-0.5 uppercase tracking-wider text-slate-400">{label}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
 
           {/* RIGHT — live showcase */}
@@ -902,35 +897,80 @@ function HowItWorksSection({ stepsRef }: { stepsRef: React.RefObject<HTMLDivElem
   )
 }
 
+const KPI_CARDS = [
+  {
+    metric: "68%",
+    label: "First-contact resolution",
+    sub: "Voice + digital, post-launch month 3",
+    Icon: PhoneCall,
+  },
+  {
+    metric: "3.2×",
+    label: "Supervisor productivity",
+    sub: "vs. legacy PBX, median across deployments",
+    Icon: Activity,
+  },
+  {
+    metric: "41%",
+    label: "Handle time reduction",
+    sub: "AI assist + smart routing combined",
+    Icon: Zap,
+  },
+  {
+    metric: "99.99%",
+    label: "Platform uptime SLA",
+    sub: "Carrier-grade, 7 global regions",
+    Icon: Shield,
+  },
+]
+
 function ComparisonSection() {
   return (
-    <section className="vn-compare py-24 px-[5%]" style={{ backgroundColor: "#0f1f2e" }} aria-labelledby="compare-h2">
-      <div className="max-w-[900px] mx-auto">
-        <motion.div {...fadeUp()} className="text-center mb-12">
-          <EyebrowLabel dark>vs. the old way</EyebrowLabel>
-          <PageHeading id="compare-h2" dark>What it replaces</PageHeading>
+    <section className="vn-compare py-24 px-[5%] bg-[#f5f9fa]" aria-labelledby="compare-h2">
+      <div className="max-w-[1100px] mx-auto">
+
+        {/* Split header */}
+        <motion.div {...fadeUp()} className="flex flex-col md:flex-row md:items-end gap-6 md:gap-16 mb-14">
+          <div className="flex-1">
+            <p className="text-[11px] font-mono font-bold tracking-[2.5px] uppercase text-accent mb-3">Performance benchmarks</p>
+            <h2 id="compare-h2" className="font-serif text-[36px] md:text-[44px] font-bold text-gray-900 leading-[1.1] tracking-tight">
+              The only contact-center metrics<br className="hidden md:block" /> your team actually reads.
+            </h2>
+          </div>
+          <div className="md:w-[340px] flex-shrink-0">
+            <p className="text-[14px] text-gray-500 leading-relaxed font-mono">
+              Benchmark data aggregated across 400+ contact centers. Aligned with Gartner CCaaS definitions. Results measured at month&nbsp;3 post-activation.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="rounded-2xl overflow-hidden border border-white/10">
-          <div className="grid grid-cols-2 bg-white/5 border-b border-white/10">
-            <div className="px-6 py-4 text-[11px] font-mono font-bold tracking-[2px] uppercase text-gray-500">The old way</div>
-            <div className="px-6 py-4 text-[11px] font-mono font-bold tracking-[2px] uppercase text-accent border-l border-white/10">With Twiching</div>
-          </div>
-          {COMPARE.map(({ problem, solution }, i) => (
-            <div key={problem} className={`vn-row grid grid-cols-2 border-b border-white/5 last:border-0 ${i % 2 === 0 ? "bg-white/[0.03]" : ""}`}>
-              <div className="px-6 py-5 flex items-start gap-3">
-                <div aria-hidden="true" className="mt-1 w-4 h-4 rounded-full bg-red-500/20 grid place-items-center flex-shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
-                </div>
-                <p className="text-[13px] font-mono text-gray-400 leading-relaxed">{problem}</p>
+        {/* KPI grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {KPI_CARDS.map(({ metric, label, sub, Icon }, i) => (
+            <motion.div
+              key={label}
+              {...fadeUp(i * 0.07)}
+              whileHover={{ y: -4, boxShadow: "0 20px 48px -12px rgba(26,188,217,0.18)" }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="relative bg-white rounded-[32px] p-7 shadow-[0_4px_20px_-6px_rgba(0,0,0,0.08)] border border-gray-100 flex flex-col gap-3"
+            >
+              {/* Icon top-right */}
+              <div className="absolute top-5 right-5 h-8 w-8 rounded-xl bg-[#e0f7fa] flex items-center justify-center">
+                <Icon className="h-4 w-4 text-accent" strokeWidth={2} />
               </div>
-              <div className="px-6 py-5 flex items-start gap-3 border-l border-white/5">
-                <Check aria-hidden="true" className="mt-0.5 h-4 w-4 text-accent flex-shrink-0" strokeWidth={2.5} />
-                <p className="text-[13px] font-mono text-gray-200 leading-relaxed">{solution}</p>
-              </div>
-            </div>
+
+              {/* Metric */}
+              <p className="font-serif text-[48px] font-bold leading-none text-accent tracking-tight">{metric}</p>
+
+              {/* Label */}
+              <p className="text-[15px] font-semibold text-gray-900 leading-snug pr-8">{label}</p>
+
+              {/* Sub */}
+              <p className="text-[12px] font-mono text-gray-400 leading-relaxed">{sub}</p>
+            </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   )
@@ -965,38 +1005,3 @@ function RelatedSection() {
   )
 }
 
-function CtaSection() {
-  return (
-    <section className="py-24 px-[5%] bg-accent relative overflow-hidden" aria-labelledby="cta-h2">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0"
-        style={{ background: "radial-gradient(900px 500px at 50% 120%, rgba(26,188,217,0.9), rgba(23,151,172,0.5) 55%, transparent 80%)" }} />
-      <div aria-hidden="true" className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full opacity-20"
-        style={{ background: "radial-gradient(circle, rgba(255,255,255,0.3), transparent 70%)" }} />
-      <motion.div {...fadeUp()} className="max-w-[640px] mx-auto text-center relative">
-        <EyebrowLabel dark>Get started</EyebrowLabel>
-        <h2 id="cta-h2" className="font-serif text-[36px] sm:text-[48px] font-semibold text-white leading-tight mb-5">
-          Get a virtual number today.
-        </h2>
-        <p className="text-[16px] text-[#e0f7fa] leading-relaxed mb-10">
-          Any area code. Any device. 14-day free trial. No hardware required.
-        </p>
-        <div className="flex flex-wrap justify-center gap-3">
-          <motion.a href="/pricing"
-            whileHover={{ y: -2, scale: 1.02 }} whileTap={{ scale: 0.97 }}
-            className="group inline-flex items-center gap-2 bg-white text-accent text-[15px] font-semibold font-mono pl-7 pr-3 py-3 rounded-full hover:bg-[#e0f7fa] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)]"
-          >
-            Start free trial
-            <span aria-hidden="true" className="grid place-items-center h-8 w-8 rounded-full bg-accent/10 group-hover:translate-x-0.5 transition-transform">
-              <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
-            </span>
-          </motion.a>
-          <motion.a href="/phone-numbers/local" whileHover={{ y: -1 }}
-            className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-white/80 hover:text-white transition-colors"
-          >
-            Compare to local numbers <ChevronRight aria-hidden="true" className="h-4 w-4" strokeWidth={2} />
-          </motion.a>
-        </div>
-      </motion.div>
-    </section>
-  )
-}

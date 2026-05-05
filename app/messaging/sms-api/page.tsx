@@ -1,6 +1,7 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Check, Code2, Webhook, MessageSquare, ShieldCheck, Zap, RefreshCw } from "lucide-react"
 
@@ -208,12 +209,7 @@ export default function SmsApiPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Put SMS in your product today."
-        sub="REST API. Two-way messaging. 10DLC handled. 14-day free trial."
-        primary={{ label: "Start free trial", href: "/pricing" }}
-        secondary={{ label: "See Bulk SMS", href: "/messaging/bulk-sms" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

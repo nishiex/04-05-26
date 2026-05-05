@@ -1,7 +1,8 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Globe, Users, Phone, MessageSquare, BarChart2, Zap } from "lucide-react"
 
@@ -169,12 +170,7 @@ export default function RemoteTeamsPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Power your remote team with UCaaS"
-        sub="Start your 14-day free trial. No hardware required."
-        primary={{ label: "Start Free Trial", href: "/pricing" }}
-        secondary={{ label: "Talk to sales", href: "/contact" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

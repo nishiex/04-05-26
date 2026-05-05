@@ -1,7 +1,8 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Package, MessageSquare, Phone, MapPin, Clock, Users } from "lucide-react"
 
@@ -167,12 +168,7 @@ export default function LogisticsPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Keep every delivery on track"
-        sub="14-day free trial. API integration available on all plans."
-        primary={{ label: "Start Free Trial", href: "/pricing" }}
-        secondary={{ label: "Talk to sales", href: "/contact" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

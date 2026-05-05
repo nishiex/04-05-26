@@ -8,8 +8,8 @@ import {
   ValueGrid,
   FeatureSplit,
   ImageSlot,
-  NextStepBand,
 } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Smartphone, VolumeX, MessageSquare, Clock } from "lucide-react"
 
@@ -157,12 +157,7 @@ export default function SecondNumberPage() {
       </section>
 
       <Faq />
-      <NextStepBand
-        heading="One phone. Two lives. Clean separation."
-        sub="No SIM swap. No second device. Activate in minutes."
-        primary={{ label: "Start 14-day free trial", href: "/pricing" }}
-        secondary={{ label: "See all number types", href: "/phone-numbers" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

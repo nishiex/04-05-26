@@ -2,7 +2,8 @@
 
 import Image from "next/image"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Home, Phone, MessageSquare, MapPin, UserCheck, PhoneCall } from "lucide-react"
 
@@ -188,12 +189,7 @@ export default function RealEstatePage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Close more deals with better communications"
-        sub="14-day free trial. Per-agent numbers from $7.99/user/mo."
-        primary={{ label: "Start Free Trial", href: "/pricing" }}
-        secondary={{ label: "Talk to sales", href: "/contact" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

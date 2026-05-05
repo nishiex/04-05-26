@@ -1,6 +1,7 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, NextStepBand } from "@/components/page-parts"
+import { PageHero, SectionHeading } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { MessageSquare, Megaphone, Code2, ArrowRight, Shield } from "lucide-react"
 
@@ -97,10 +98,7 @@ export default function MessagingHub() {
       </section>
 
       <Faq />
-      <NextStepBand
-        primary={{ label: "Start free trial", href: "/pricing" }}
-        secondary={{ label: "Explore SMS Gateway", href: "/messaging/sms-gateway" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

@@ -2,8 +2,9 @@ import { MegaNav } from "@/components/mega-nav"
 import { Footer } from "@/components/footer"
 import {
   PageHero, SectionHeading, StatBar, ValueGrid,
-  FeatureSplit, RelatedCards, NextStepBand,
+  FeatureSplit, RelatedCards,
 } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import {
   Phone, MessageSquare, Mic2, Bot, PhoneIncoming,
   Globe, BarChart3, ShieldCheck, Repeat2,
@@ -189,12 +190,7 @@ export default function ServicesPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Start with any service. Add the rest later."
-        sub="14-day free trial — no charges, no card required. Your first number is live in under 3 minutes."
-        primary={{ label: "Start free trial", href: "/pricing" }}
-        secondary={{ label: "See all services", href: "/services" }}
-      />
+      <FinalCta />
 
       <Footer />
     </div>

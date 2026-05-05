@@ -5,7 +5,8 @@ import { motion, useInView } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, NextStepBand, RelatedCards, InlineList, DarkBand } from "@/components/page-parts"
+import { PageHero, SectionHeading, RelatedCards, InlineList, DarkBand } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Users, Phone, BarChart2, MessageSquare, Zap, Target, TrendingUp, Clock, CheckCircle } from "lucide-react"
 
@@ -376,12 +377,7 @@ export default function SalesPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Give your sales team the phone advantage"
-        sub="14-day free trial. Auto dialers and CRM integration on Enterprise."
-        primary={{ label: "Start Free Trial", href: "/pricing" }}
-        secondary={{ label: "Talk to sales", href: "/contact" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

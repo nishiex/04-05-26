@@ -1,6 +1,7 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Brain, GitBranch, Clock, Users, Globe, Zap } from "lucide-react"
 
@@ -173,11 +174,7 @@ export default function RoutingPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Stop misdirecting calls. Start routing intelligently."
-        sub="14-day free trial. Skill-based routing on Professional and Enterprise."
-        primary={{ label: "Start Free Trial", href: "/pricing" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

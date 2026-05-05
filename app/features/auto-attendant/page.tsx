@@ -1,6 +1,7 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Shuffle, Clock, Phone, GitBranch, Globe, Settings } from "lucide-react"
 
@@ -142,11 +143,7 @@ export default function AutoAttendantPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Your professional phone system, set up in a day"
-        sub="Multi-level auto-attendant included on all plans. 14-day free trial."
-        primary={{ label: "Start Free Trial", href: "/pricing" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

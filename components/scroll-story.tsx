@@ -74,8 +74,8 @@ const steps: Step[] = [
     ],
     link: { label: "Learn about voice services", href: "https://www.twiching.ai" },
     visual: {
-      accent: "#16a34a",
-      bg: "#f0fdf4",
+      accent: "#1797ac",
+      bg: "#d6f4f8",
       metric: "99.9%",
       metricLabel: "Uptime guarantee",
       chart: [88, 92, 95, 91, 97, 99, 99],
@@ -99,8 +99,8 @@ const steps: Step[] = [
     ],
     link: { label: "See messaging plans", href: "https://www.twiching.ai" },
     visual: {
-      accent: "#d97706",
-      bg: "#fffbeb",
+      accent: "#0891b2",
+      bg: "#cffafe",
       metric: "3-in-1",
       metricLabel: "Gateway · Bulk · API",
       chart: [30, 50, 60, 75, 80, 88, 95],
@@ -124,8 +124,8 @@ const steps: Step[] = [
     ],
     link: { label: "Request a demo", href: "#" },
     visual: {
-      accent: "#7c3aed",
-      bg: "#f5f3ff",
+      accent: "#0e7490",
+      bg: "#e0f7fa",
       metric: "–3",
       metricLabel: "Vendors eliminated",
       chart: [65, 60, 58, 52, 45, 38, 28],

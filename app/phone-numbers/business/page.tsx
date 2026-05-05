@@ -8,8 +8,8 @@ import {
   ValueGrid,
   FeatureSplit,
   ImageSlot,
-  NextStepBand,
 } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Shield, Clock, Smartphone, MessageSquare, PhoneForwarded } from "lucide-react"
 
@@ -155,12 +155,7 @@ export default function BusinessNumberPage() {
       </section>
 
       <Faq />
-      <NextStepBand
-        heading="Your business, your number, your hours."
-        sub="No personal number exposure. No hardware. Activate in minutes."
-        primary={{ label: "Start 14-day free trial", href: "/pricing" }}
-        secondary={{ label: "Explore second numbers", href: "/phone-numbers/second-number" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

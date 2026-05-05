@@ -2,8 +2,9 @@ import { MegaNav } from "@/components/mega-nav"
 import { Footer } from "@/components/footer"
 import {
   PageHero, SectionHeading, StatBar, ValueGrid,
-  FeatureSplit, NextStepBand, ImageSlot,
+  FeatureSplit, ImageSlot,
 } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import {
   Globe, ShieldCheck, Zap, Users, HeartHandshake,
   ServerCrash, Building2, Lightbulb,
@@ -158,12 +159,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <NextStepBand
-        heading="Ready to meet your new phone system?"
-        sub="14-day free trial. No credit card required. Provision your first number in under 60 seconds."
-        primary={{ label: "Start free trial", href: "/pricing" }}
-        secondary={{ label: "Talk to sales", href: "/contact" }}
-      />
+      <FinalCta />
 
       <Footer />
     </div>

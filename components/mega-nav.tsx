@@ -13,37 +13,60 @@ import {
   Icon,
 } from "lucide-react"
 
-type MenuKey = "product" | "solutions" | "company" | "resources" | null
+type MenuKey = "product" | "solutions" | "resources" | null
 
-/* ─── Phone Numbers data ─────────────────────────────────────── */
-const numbersCol1 = [
-  { title: "Virtual Phone Number", desc: "Nationwide reach, any area code.", Icon: Globe, href: "/phone-numbers/virtual" },
-  { title: "Local Phone Number", desc: "City/region area code presence.", Icon: MapPin, href: "/phone-numbers/local" },
-  { title: "Vanity Phone Number", desc: "Brand-memorable numbers.", Icon: Sparkles, href: "/phone-numbers/vanity" },
-  { title: "Business Phone Number", desc: "Dedicated professional lines.", Icon: Briefcase, href: "/phone-numbers/business" },
-  { title: "Second Phone Number", desc: "Work + personal on one device.", Icon: PhoneIncoming, href: "/phone-numbers/second-number" },
+/* ─── Product panel data ─────────────────────────────────────── */
+const productPillars = [
+  { title: "Phone Numbers",    sub: "Virtual, local & vanity numbers",  href: "/phone-numbers" },
+  { title: "Voice",            sub: "Call termination & routing",        href: "/voice" },
+  { title: "Messaging",        sub: "SMS, bulk & API delivery",          href: "/messaging" },
+  { title: "Reports & Logs",   sub: "Dashboards, analytics & audit trail", href: "/reports" },
 ]
 
-/* ─── Voice data ─────────────────────────────────────────────── */
+const ucaasCapabilities = [
+  { title: "Video Meetings",          href: "/features/video-meetings" },
+  { title: "Team Chat",               href: "/features/team-chat" },
+  { title: "Toll-Free Numbers",       href: "/phone-numbers/toll-free" },
+  { title: "Business Phone Number",   href: "/phone-numbers/business" },
+  { title: "Second Phone Number",     href: "/phone-numbers/second-number" },
+  { title: "Voice Termination",       href: "/voice/termination" },
+  { title: "SIP Termination",         href: "/voice/sip-termination" },
+  { title: "SMS Gateway",             href: "/messaging/sms-gateway" },
+  { title: "Bulk SMS",                href: "/messaging/bulk-sms" },
+]
+
+const contactCenterAI = [
+  { title: "Omnichannel Contact Center", href: "/voice/contact-center" },
+  { title: "Auto-Attendant & IVR",       href: "/features/auto-attendant" },
+  { title: "AI Intelligent Routing",     href: "/features/routing" },
+  { title: "Call Recording",             href: "/features/call-recording" },
+  { title: "AI Conversation Intelligence",  href: "/features/conv-intelligence" },
+  { title: "AI Supervisor Tools",        href: "/features/supervisor" },
+  { title: "SMS API",                    href: "/messaging/sms-api" },
+  { title: "AI Agent Assist",            href: "/voice/contact-center" },
+]
+
+/* ─── Voice data (kept for mobile) ──────────────────────────── */
 const voiceCol1 = [
-  { title: "Voice Termination", desc: "Global call termination.", Icon: PhoneCall, href: "/voice/termination" },
-  { title: "SIP Termination", desc: "Secure SIP-based routing.", Icon: Network, href: "/voice/sip-termination" },
-  // { title: "VoIP Wholesaler", desc: "Scalable wholesale voice.", Icon: Building2, href: "/voice/voip-wholesale" },
-  { title: "Omnichannel", desc: "Customer interaction tools.", Icon: Headphones, href: "/voice/contact-center" },
+  { title: "Voice Termination", Icon: PhoneCall, href: "/voice/termination" },
+  { title: "SIP Termination",   Icon: Network,   href: "/voice/sip-termination" },
+  { title: "Omnichannel",       Icon: Headphones, href: "/voice/contact-center" },
 ]
 const voiceFeatures = [
-  { title: "Auto-Attendant", Icon: Shuffle, href: "/features/auto-attendant" },
-  { title: "Call Recording", Icon: Mic, href: "/features/call-recording" },
-  { title: "Intelligent Routing", Icon: Brain, href: "/features/routing" },
-  { title: "Conversation Intelligence", Icon: Shield, href: "/features/conv-intelligence" },
-  { title: "Supervisor Tools", Icon: Users, href: "/features/supervisor" },
+  { title: "Auto-Attendant",          Icon: Shuffle, href: "/features/auto-attendant" },
+  { title: "Call Recording",          Icon: Mic,     href: "/features/call-recording" },
+  { title: "AI Intelligent Routing",   Icon: Brain,   href: "/features/routing" },
+  { title: "AI Conversation Intelligence", Icon: Shield, href: "/features/conv-intelligence" },
+  { title: "AI Supervisor Tools",      Icon: Users,   href: "/features/supervisor" },
 ]
-
-/* ─── Messaging data ─────────────────────────────────────────── */
+const numbersCol1 = [
+  { title: "Business Phone Number",Icon: Briefcase,     href: "/phone-numbers/business" },
+  { title: "Second Phone Number",  Icon: PhoneIncoming, href: "/phone-numbers/second-number" },
+]
 const messagingCol1 = [
-  { title: "SMS Gateway", desc: "Multi-channel delivery from one dashboard.", Icon: MessageSquare, href: "/messaging/sms-gateway" },
-  { title: "Bulk SMS", desc: "Campaign-grade outreach at scale.", Icon: Megaphone, href: "/messaging/bulk-sms" },
-  { title: "SMS API", desc: "Developer integration in under a day.", Icon: Code2, href: "/messaging/sms-api" },
+  { title: "SMS Gateway", Icon: MessageSquare, href: "/messaging/sms-gateway" },
+  { title: "Bulk SMS",    Icon: Megaphone,     href: "/messaging/bulk-sms" },
+  { title: "SMS API",     Icon: Code2,         href: "/messaging/sms-api" },
 ]
 
 /* ─── Solutions data ─────────────────────────────────────────── */
@@ -57,15 +80,18 @@ const solutionsByIndustry = [
 const solutionsByRole = [
   { title: "Sales Teams", Icon: Users, href: "/solutions/sales" },
   { title: "Remote Teams", Icon: UserCheck, href: "/solutions/remote" },
-  {  title:"Saas",  Icon:Cloud, href:"/solutions/saas"},
+  { title: "SaaS", Icon: Cloud, href: "/solutions/saas" },
+]
+const integrations = [
+  { title: "HubSpot", sub: "Sync calls, SMS & AI transcripts to HubSpot records", href: "/integrations/hubspot" },
+  { title: "Zoho CRM", sub: "Auto-log calls & screen-pop across Zoho CRM, Desk & Bigin", href: "/integrations/zoho" },
 ]
 
-/* ─── Company data ────────────────────────────────────────────── */
+/* ─── Company data (merged into Resources) ───────────────────── */
 const companyLinks = [
-  { title: "About Us", desc: "Our mission, vision, and team.", Icon: Info, href: "/company/about" },
-  { title: "Careers", desc: "Join the Twiching team.", Icon: Award, href: "/company/careers" },
-  { title: "Press", desc: "News, media kit, and announcements.", Icon: Newspaper, href: "/company/press" },
-  { title: "Legal", desc: "Terms, privacy, and compliance.", Icon: FileText, href: "/company/legal" },
+  { title: "About Us", href: "/company/about" },
+  { title: "Press",    href: "/company/press" },
+  { title: "Legal",    href: "/company/legal" },
 ]
 
 /* ─── Resources data ──────────────────────────────────────────── */
@@ -157,122 +183,160 @@ function SmallLinkRow({
 /* ─── Product panel ───────────────────────────────────────────── */
 function ProductPanel({ close }: { close: () => void }) {
   return (
-    <div className="max-w-[1200px] mx-auto px-[5%] py-10 grid grid-cols-4 gap-12">
-      {/* Phone Numbers */}
-      <div>
-        <ColHeading>Phone Numbers</ColHeading>
-        <ul className="space-y-1">
-          {numbersCol1.map(({ title, desc, Icon, href }) => (
-            <li key={title}>
-              <LinkRow title={title} desc={desc} Icon={Icon} href={href} close={close} />
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="max-w-[1280px] mx-auto px-[5%] py-8 grid gap-0 divide-x divide-gray-200" style={{ gridTemplateColumns: "1fr 1.1fr 1.3fr 1fr" }}>
 
-      {/* Voice */}
-      <div>
-        <ColHeading>Voice</ColHeading>
+      {/* Col 1 — Product Pillars */}
+      <div className="pr-8">
+        <ColHeading>Product Pillars</ColHeading>
         <ul className="space-y-1">
-          {voiceCol1.map(({ title, desc, Icon, href }) => (
-            <li key={title}>
-              <LinkRow title={title} desc={desc} Icon={Icon} href={href} close={close} />
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Messaging + Call Features */}
-      <div className="space-y-8">
-        <div>
-          <ColHeading>Messaging</ColHeading>
-          <ul className="space-y-1">
-            {messagingCol1.map(({ title, desc, Icon, href }) => (
-              <li key={title}>
-                <LinkRow title={title} desc={desc} Icon={Icon} href={href} close={close} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div>
-        <ColHeading>Call Features</ColHeading>
-        <ul className="space-y-1">
-          {voiceFeatures.map(({ title, Icon, href }) => (
+          {productPillars.map(({ title, sub, href }) => (
             <li key={title}>
               <a
                 href={href}
                 onClick={close}
-                className="flex items-center gap-3 px-2.5 py-2 rounded-xl hover:bg-slate-50 transition-colors group"
+                className="block px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
               >
-                <span className="w-8 h-8 rounded-full bg-[#e0f7fa] text-[#1abcd9] grid place-items-center flex-shrink-0 group-hover:bg-[#95d9e8]/30 transition-colors">
-                  <Icon className="h-3.5 w-3.5" strokeWidth={1.8} />
-                </span>
-                <span className="text-[13px] font-semibold text-black">{title}</span>
+                <span className="block text-[14px] font-semibold text-gray-900 group-hover:text-[#1abcd9] transition-colors leading-tight">{title}</span>
+                <span className="block text-[12px] text-gray-400 mt-0.5 leading-snug">{sub}</span>
               </a>
             </li>
           ))}
         </ul>
       </div>
+
+      {/* Col 2 — UCaaS Capabilities */}
+      <div className="px-8">
+        <ColHeading>UCaaS Capabilities</ColHeading>
+        <ul className="space-y-0.5">
+          {ucaasCapabilities.map(({ title, href }) => (
+            <li key={title}>
+              <a
+                href={href}
+                onClick={close}
+                className="block px-2 py-1.5 text-[14px] text-gray-700 hover:text-[#1abcd9] hover:bg-slate-50 rounded-lg transition-colors leading-snug"
+              >
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Col 3 — Contact Center & AI */}
+      <div className="px-8">
+        <ColHeading>Contact Center &amp; AI</ColHeading>
+        <ul className="space-y-0.5">
+          {contactCenterAI.map(({ title, href }) => (
+            <li key={title}>
+              <a
+                href={href}
+                onClick={close}
+                className="block px-2 py-1.5 text-[14px] text-gray-700 hover:text-[#1abcd9] hover:bg-slate-50 rounded-lg transition-colors whitespace-nowrap"
+              >
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Col 4 — Promo */}
+      <div className="pl-8 flex flex-col justify-between">
+        <div>
+          <p className="text-[18px] font-bold text-gray-900 leading-snug mb-3">
+            One platform.<br />Every conversation.
+          </p>
+          <p className="text-[13px] text-gray-500 leading-relaxed">
+            Cloud phone, AI contact center, SMS, and wholesale voice — all on one platform with 99.99% uptime, carrier-grade infrastructure, and 500+ active partners.
+          </p>
+        </div>
+        <a
+          href="/contact"
+          onClick={close}
+          className="mt-6 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-semibold font-sans px-5 py-2.5 rounded-full hover:bg-[#1797ac] transition-colors self-start"
+        >
+          Get A Free Trial
+          <ArrowRight className="h-4 w-4" strokeWidth={2} />
+        </a>
+      </div>
+
     </div>
+  )
+}
+
+/* ─── Plain link helper (shared by Solutions + Resources) ────── */
+function PlainLink({ title, href, close }: { title: string; href: string; close: () => void }) {
+  return (
+    <a
+      href={href}
+      onClick={close}
+      className="block px-2 py-1.5 text-[14px] text-gray-700 hover:text-[#1abcd9] hover:bg-slate-50 rounded-lg transition-colors whitespace-nowrap"
+    >
+      {title}
+    </a>
   )
 }
 
 /* ─── Solutions panel ─────────────────────────────────────────── */
 function SolutionsPanel({ close }: { close: () => void }) {
   return (
-    <div className="max-w-[1200px] mx-auto px-[5%] py-8 grid grid-cols-3 gap-8">
-      {/* By Industry */}
-      <div>
+    <div className="max-w-[1280px] mx-auto px-[5%] py-8 grid gap-0 divide-x divide-gray-200" style={{ gridTemplateColumns: "1fr 1fr 1fr 1fr" }}>
+
+      {/* Col 1 — By Industry */}
+      <div className="pr-8">
         <ColHeading>By Industry</ColHeading>
-        <ul className="grid grid-cols-2 gap-0.5">
-          {solutionsByIndustry.map(({ title, Icon, href }) => (
-            <li key={title}>
-              <SmallLinkRow title={title} Icon={Icon} href={href} close={close} />
-            </li>
+        <ul className="space-y-0.5">
+          {solutionsByIndustry.map(({ title, href }) => (
+            <li key={title}><PlainLink title={title} href={href} close={close} /></li>
           ))}
         </ul>
       </div>
 
-      {/* By Role */}
-      <div>
+      {/* Col 2 — By Role */}
+      <div className="px-8">
         <ColHeading>By Role</ColHeading>
         <ul className="space-y-0.5">
-          {solutionsByRole.map(({ title, Icon, href }) => (
+          {solutionsByRole.map(({ title, href }) => (
+            <li key={title}><PlainLink title={title} href={href} close={close} /></li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Col 3 — Integrations */}
+      <div className="px-8">
+        <ColHeading>Integrations</ColHeading>
+        <ul className="space-y-2">
+          {integrations.map(({ title, sub, href }) => (
             <li key={title}>
-              <SmallLinkRow title={title} Icon={Icon} href={href} close={close} />
+              <a
+                href={href}
+                onClick={close}
+                className="block px-2 py-2 rounded-lg hover:bg-slate-50 transition-colors group"
+              >
+                <span className="block text-[14px] font-semibold text-gray-900 group-hover:text-[#1abcd9] transition-colors leading-tight whitespace-nowrap">{title}</span>
+                <span className="block text-[12px] text-gray-400 mt-0.5 leading-snug">{sub}</span>
+              </a>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Featured */}
-      <FeaturedCard
-        headline="Built for every team, every industry."
-        sub="Sales, remote, healthcare, finance — Twiching adapts to how your team works."
-      />
-    </div>
-  )
-}
-
-/* ─── Company panel ───────────────────────────────────────────── */
-function CompanyPanel({ close }: { close: () => void }) {
-  return (
-    <div className="max-w-[1200px] mx-auto px-[5%] py-8 grid grid-cols-3 gap-8">
-      <div className="col-span-2">
-        <ColHeading>Company</ColHeading>
-        <ul className="grid grid-cols-2 gap-0.5">
-          {companyLinks.map(({ title, desc, Icon, href }) => (
-            <li key={title}>
-              <LinkRow title={title} desc={desc} Icon={Icon} href={href} close={close} />
-            </li>
-          ))}
-        </ul>
+      {/* Col 4 — Promo */}
+      <div className="pl-8 flex flex-col justify-between">
+        <div>
+          <p className="text-[18px] font-bold text-gray-900 leading-snug mb-3">
+            Built for every team,<br />every industry.
+          </p>
+          <p className="text-[13px] text-gray-500 leading-relaxed">
+            Sales, remote, healthcare, finance — Twiching adapts to how your team works, wherever they are.
+          </p>
+        </div>
+        <a href="/contact" onClick={close}
+          className="mt-6 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-semibold font-sans px-5 py-2.5 rounded-full hover:bg-[#1797ac] transition-colors self-start">
+          Get A Free Trial
+          <ArrowRight className="h-4 w-4" strokeWidth={2} />
+        </a>
       </div>
-      <FeaturedCard
-        headline="Built on trust, driven by innovation."
-        sub="Learn about the team building the future of business communications."
-      />
     </div>
   )
 }
@@ -280,31 +344,54 @@ function CompanyPanel({ close }: { close: () => void }) {
 /* ─── Resources panel ─────────────────────────────────────────── */
 function ResourcesPanel({ close }: { close: () => void }) {
   return (
-    <div className="max-w-[1200px] mx-auto px-[5%] py-8 grid grid-cols-3 gap-8">
-      <div>
+    <div className="max-w-[1280px] mx-auto px-[5%] py-8 grid gap-0 divide-x divide-gray-200" style={{ gridTemplateColumns: "1fr 1fr 1fr 1fr" }}>
+
+      {/* Col 1 — Learn */}
+      <div className="pr-8">
         <ColHeading>Learn</ColHeading>
         <ul className="space-y-0.5">
-          {resourcesCol1.map(({ title, desc, Icon, href }) => (
-            <li key={title}>
-              <LinkRow title={title} desc={desc} Icon={Icon} href={href} close={close} />
-            </li>
+          {resourcesCol1.map(({ title, href }) => (
+            <li key={title}><PlainLink title={title} href={href} close={close} /></li>
           ))}
         </ul>
       </div>
-      <div>
+
+      {/* Col 2 — Support */}
+      <div className="px-8">
         <ColHeading>Support</ColHeading>
         <ul className="space-y-0.5">
-          {resourcesCol2.map(({ title, desc, Icon, href }) => (
-            <li key={title}>
-              <LinkRow title={title} desc={desc} Icon={Icon} href={href} close={close} />
-            </li>
+          {resourcesCol2.map(({ title, href }) => (
+            <li key={title}><PlainLink title={title} href={href} close={close} /></li>
           ))}
         </ul>
       </div>
-      <FeaturedCard
-        headline="Everything you need to get up and running."
-        sub="Docs, guides, case studies, and expert support — all in one place."
-      />
+
+      {/* Col 3 — Company */}
+      <div className="px-8">
+        <ColHeading>Company</ColHeading>
+        <ul className="space-y-0.5">
+          {companyLinks.map(({ title, href }) => (
+            <li key={title}><PlainLink title={title} href={href} close={close} /></li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Col 4 — Promo */}
+      <div className="pl-8 flex flex-col justify-between">
+        <div>
+          <p className="text-[18px] font-bold text-gray-900 leading-snug mb-3">
+            Everything you need<br />to get started.
+          </p>
+          <p className="text-[13px] text-gray-500 leading-relaxed">
+            Docs, guides, case studies, and expert support — all in one place.
+          </p>
+        </div>
+        <a href="/contact" onClick={close}
+          className="mt-6 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-semibold font-sans px-5 py-2.5 rounded-full hover:bg-[#1797ac] transition-colors self-start">
+          Get A Free Trial
+          <ArrowRight className="h-4 w-4" strokeWidth={2} />
+        </a>
+      </div>
     </div>
   )
 }
@@ -389,23 +476,6 @@ export function MegaNav() {
               <Chevron open={open === "solutions"} />
             </button>
 
-            {/* Company */}
-            <button
-              onMouseEnter={() => handleMouseEnter("company")}
-              onClick={() => setOpen(open === "company" ? null : "company")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen(open === "company" ? null : "company") }
-                if (e.key === "Escape") setOpen(null)
-              }}
-              aria-expanded={open === "company"}
-              aria-haspopup="true"
-              className={`flex items-center gap-1 px-3.5 py-2 rounded-full text-[14px] font-sans font-medium transition-colors ${open === "company" ? "bg-slate-100 text-black" : "text-gray-600 hover:text-black hover:bg-slate-50"
-                }`}
-            >
-              Company
-              <Chevron open={open === "company"} />
-            </button>
-
             {/* Resources */}
             <button
               onMouseEnter={() => handleMouseEnter("resources")}
@@ -428,7 +498,7 @@ export function MegaNav() {
               href="/pricing"
               className="px-3.5 py-2 text-[14px] font-sans font-medium text-gray-600 hover:text-black hover:bg-slate-50 rounded-full transition-colors"
             >
-              Pricing and plan
+              Pricing
             </a>
           </nav>
 
@@ -466,7 +536,6 @@ export function MegaNav() {
           >
             {open === "product" && <ProductPanel close={close} />}
             {open === "solutions" && <SolutionsPanel close={close} />}
-            {open === "company" && <CompanyPanel close={close} />}
             {open === "resources" && <ResourcesPanel close={close} />}
           </div>
         )}
@@ -582,27 +651,10 @@ export function MegaNav() {
                       {title}
                     </a>
                   ))}
-                </div>
-              )}
-            </div>
-
-            {/* Company */}
-            <div>
-              <button
-                onClick={() => setMobileSection(mobileSection === "company" ? null : "company")}
-                className="w-full flex items-center justify-between h-14 px-3 rounded-xl text-gray-800 font-semibold text-[15px] hover:bg-slate-50 transition-colors"
-              >
-                Company
-                <Chevron open={mobileSection === "company"} />
-              </button>
-              {mobileSection === "company" && (
-                <div className="ml-2 mb-2 space-y-1">
-                  {companyLinks.map(({ title, Icon, href }) => (
+                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Integrations</p>
+                  {integrations.map(({ title, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-3 px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
-                      <span className="w-7 h-7 rounded-lg bg-[#e0f7fa] text-[#1abcd9] grid place-items-center flex-shrink-0">
-                        <Icon className="h-3.5 w-3.5" strokeWidth={1.8} />
-                      </span>
+                      className="flex flex-col justify-center px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
                       {title}
                     </a>
                   ))}
@@ -638,6 +690,13 @@ export function MegaNav() {
                       <span className="w-7 h-7 rounded-lg bg-[#e0f7fa] text-[#1abcd9] grid place-items-center flex-shrink-0">
                         <Icon className="h-3.5 w-3.5" strokeWidth={1.8} />
                       </span>
+                      {title}
+                    </a>
+                  ))}
+                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Company</p>
+                  {companyLinks.map(({ title, href }) => (
+                    <a key={title} href={href} onClick={() => setMobileOpen(false)}
+                      className="flex items-center px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
                       {title}
                     </a>
                   ))}

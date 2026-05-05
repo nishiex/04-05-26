@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, NextStepBand, StatBar, FeatureSplit, DarkBand, InlineList, RelatedCards } from "@/components/page-parts"
+import { PageHero, SectionHeading, StatBar, FeatureSplit, DarkBand, InlineList, RelatedCards } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 
 export const metadata: Metadata = {
@@ -181,12 +182,7 @@ export default function VoiceTerminationPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Better call quality starts today."
-        sub="STIR/SHAKEN attestation included on all plans. 14-day free trial."
-        primary={{ label: "Start free trial", href: "/pricing" }}
-        secondary={{ label: "See SIP termination", href: "/voice/sip-termination" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }

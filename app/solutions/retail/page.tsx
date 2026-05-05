@@ -1,7 +1,8 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, NextStepBand, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { ShoppingBag, MessageSquare, Phone, BarChart2, Megaphone, Globe } from "lucide-react"
 
@@ -167,12 +168,7 @@ export default function RetailPage() {
         ]}
       />
 
-      <NextStepBand
-        heading="Turn every customer interaction into a sale"
-        sub="14-day free trial. Bulk SMS, omnichannel, and local numbers included."
-        primary={{ label: "Start Free Trial", href: "/pricing" }}
-        secondary={{ label: "Talk to sales", href: "/contact" }}
-      />
+      <FinalCta />
     </PageLayout>
   )
 }
