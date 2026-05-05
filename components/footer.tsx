@@ -1,34 +1,45 @@
 ﻿/* ── Link columns ─────────────────────────────────────────────────── */
 const cols = [
   {
+    title: "Features",
+    links: [
+      { label: "Video Meetings",               href: "/features/video-meetings" },
+      { label: "Team Chat",                    href: "/features/team-chat" },
+      { label: "Call Recording",               href: "/features/call-recording" },
+      { label: "AI Conversation Intelligence", href: "/features/conv-intelligence" },
+      { label: "AI Supervisor Tools",          href: "/features/supervisor" },
+      { label: "Auto-Attendant & IVR",         href: "/features/auto-attendant" },
+      { label: "AI Intelligent Routing",       href: "/features/routing" },
+    ],
+  },
+  {
     title: "Products",
     links: [
-      { label: "Phone numbers", href: "#" },
-      { label: "Voice services", href: "#" },
-      { label: "Messaging", href: "#" },
-      { label: "AI receptionist", href: "#" },
-      { label: "Pricing", href: "#" },
+      { label: "Business Phone Number", href: "/phone-numbers/business" },
+      { label: "Toll-Free Numbers",     href: "/phone-numbers/toll-free" },
+      { label: "Second Phone Number",   href: "/phone-numbers/second-number" },
+      { label: "Voice Termination",     href: "/voice/termination" },
+      { label: "SMS Gateway",           href: "/messaging/sms-gateway" },
+      { label: "Bulk SMS",              href: "/messaging/bulk-sms" },
+      { label: "Reports & Logs",        href: "/reports" },
+      { label: "Pricing",               href: "/pricing" },
+    ],
+  },
+  {
+    title: "Integrations",
+    links: [
+      { label: "HubSpot",  href: "/integrations/hubspot" },
+      { label: "Zoho CRM", href: "/integrations/zoho" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Trust & SLA", href: "#" },
-      { label: "Singapore infrastructure", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Press", href: "#" },
-    ],
-  },
-  {
-    title: "Get in touch",
-    links: [
-      { label: "Request a Demo", href: "/contact", highlight: true },
-      { label: "Start Free Trial", href: "#" },
-      { label: "Sales enquiries", href: "#" },
-      { label: "Support", href: "#" },
-      { label: "Status", href: "#" },
-      { label: "Docs", href: "#" },
+      { label: "About Us",          href: "/company/about" },
+      { label: "Press",             href: "/company/press" },
+      { label: "Contact",           href: "/contact" },
+      { label: "Request a Demo",    href: "/contact", highlight: true },
+      { label: "Legal",             href: "/company/legal" },
     ],
   },
 ]
@@ -40,7 +51,7 @@ export function Footer() {
       <div className="max-w-[1299px] mx-auto">
 
         {/* Top grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-white/10">
 
           {/* Brand col */}
           <div className="sm:col-span-2 lg:col-span-2">
