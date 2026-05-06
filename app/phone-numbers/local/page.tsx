@@ -1,4 +1,4 @@
-﻿import { Metadata } from "next"
+import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
 import {
   PageHero,
@@ -13,7 +13,7 @@ import {
 } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
-import { MapPin, TrendingUp, Globe, Layers } from "lucide-react"
+import { MapPin, TrendingUp, Globe, Layers, ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Local Phone Numbers · Any Area Code, Any City | Twiching",
@@ -112,23 +112,111 @@ export default function LocalNumberPage() {
         <ValueGrid items={BENEFITS} cols={4} />
       </section>
 
-      {/* ── Feature split: answer-rate math ────────────────────── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <FeatureSplit
-          eyebrow="The math"
-          heading="What the answer-rate difference is worth"
-          body="200 dials a week at a 15% unknown-number answer rate gets you 30 conversations. The same 200 dials from a matching local area code — at 45% — gets you 90. That is 60 additional conversations per rep per week without a single extra dial."
-          points={[
-            "3× higher answer rate vs. unknown out-of-state",
-            "Applies to cold outbound and warm follow-up equally",
-            "Scales with rep count — 10 reps = 600 extra conversations/week",
-          ]}
-          cta={{ label: "Start free trial", href: "/pricing" }}
-          image={{
-            // src: "/images/local-answer-rate.jpg",
-            alt: "Answer rate comparison chart",
-          }}
-        />
+      {/* ── The math behind a local number ─────────────────────── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        {/* Section label */}
+        <div className="flex items-center gap-3 mb-12 border-b border-gray-100 pb-5">
+          <span className="inline-block w-8 h-px bg-accent" />
+          <p className="text-[10px] font-mono font-bold tracking-[3px] uppercase text-accent">
+            The math behind a local number
+          </p>
+        </div>
+
+        {/* Headline row */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-end mb-16">
+          <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-foreground leading-[1.05] text-balance">
+            Recognized area codes{" "}
+            <em className="not-italic text-accent">get answered.</em>
+          </h2>
+          <p className="text-[15px] text-gray-500 leading-relaxed max-w-[340px] lg:text-right">
+            Same dial volume. Same reps. Different caller ID — and the conversations compound from day one.
+          </p>
+        </div>
+
+        {/* Two-column editorial breakdown */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-gray-100 rounded-2xl overflow-hidden">
+
+          {/* Left — headline metric */}
+          <div className="bg-foreground text-white px-10 py-12 flex flex-col justify-between min-h-[360px]">
+            <div>
+              <p className="text-[10px] font-mono font-bold tracking-[3px] uppercase text-accent mb-8">
+                Headline metric
+              </p>
+              <div className="flex items-end gap-3 mb-6">
+                <span className="text-[112px] font-semibold leading-none tracking-tightest text-white">4</span>
+                <span className="text-[48px] font-semibold leading-none text-accent mb-3">×</span>
+              </div>
+            </div>
+            <p className="text-[15px] text-white/70 leading-relaxed max-w-[320px]">
+              Answer rate when the caller ID matches a local area code.
+            </p>
+          </div>
+
+          {/* Right — per-rep breakdown */}
+          <div className="bg-gray-50 px-10 py-12 flex flex-col justify-between min-h-[360px]">
+            <div className="flex items-start justify-between mb-8">
+              <p className="text-[10px] font-mono font-bold tracking-[3px] uppercase text-gray-400">Per rep / week</p>
+              <p className="text-[10px] font-mono text-gray-400">200 dials baseline</p>
+            </div>
+
+            <div className="mb-8">
+              <div className="flex items-end gap-2 mb-3">
+                <span className="text-[72px] font-semibold leading-none tracking-tightest text-foreground">+60</span>
+              </div>
+              <p className="text-[15px] font-medium text-gray-800 mb-1">Extra conversations recovered weekly.</p>
+              <p className="text-[13px] text-gray-500">
+                15% {'→'} 45% answer rate, no extra dials, no new headcount.
+              </p>
+            </div>
+
+            {/* Before / after bar */}
+            <div className="space-y-3">
+              <div>
+                <div className="flex justify-between text-[11px] font-mono text-gray-400 mb-1.5">
+                  <span>Unknown number</span>
+                  <span>15% — 30 conversations</span>
+                </div>
+                <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
+                  <div className="h-full w-[15%] bg-gray-400 rounded-full" />
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-[11px] font-mono text-gray-400 mb-1.5">
+                  <span>Local area code</span>
+                  <span>45% — 90 conversations</span>
+                </div>
+                <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
+                  <div className="h-full w-[45%] bg-accent rounded-full" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom footnotes row */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border-x border-b border-gray-100 rounded-b-none -mt-px divide-x divide-gray-100">
+          {[
+            { value: "3×", label: "Higher answer rate", note: "vs. unknown out-of-state" },
+            { value: "600+", label: "Extra convos/week", note: "at 10 reps" },
+            { value: "0", label: "Extra dials needed", note: "same call volume" },
+          ].map(({ value, label, note }) => (
+            <div key={label} className="px-8 py-6 flex flex-col gap-1">
+              <span className="text-2xl font-semibold tracking-tight text-foreground">{value}</span>
+              <span className="text-[13px] font-medium text-gray-700">{label}</span>
+              <span className="text-[11px] font-mono text-gray-400">{note}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-8">
+          <a
+            href="/pricing"
+            className="inline-flex items-center gap-1.5 text-accent text-[14px] font-semibold hover:gap-2.5 transition-all"
+          >
+            Start free trial <ArrowRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
       </section>
 
       {/* ── Dark band: area codes ───────────────────────────────── */}
