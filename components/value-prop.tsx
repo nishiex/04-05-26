@@ -70,12 +70,12 @@ export function ValueProp() {
             transition: "opacity 0.5s ease, transform 0.5s ease",
           }}
         >
-          <p className="text-xs font-bold tracking-[1.8px] uppercase text-accent font-mono mb-3">
+          <p className="text-xs font-medium tracking-[1.8px] uppercase text-accent font-mono mb-3">
             From Sign-up to Live Calls
           </p>
           <h2
             id="vp-heading"
-            className="font-serif text-4xl md:text-5xl font-bold text-foreground tracking-tight text-balance leading-[1.06]"
+            className="font-serif text-4xl md:text-5xl font-medium text-foreground tracking-tight text-balance leading-[1.06]"
           >
             Up and running in a day, not a quarter.
           </h2>
@@ -122,7 +122,7 @@ export function ValueProp() {
                 </div>
                 {/* Step badge */}
                 <span
-                  className={`absolute bottom-0 right-0 translate-x-1 translate-y-1 text-[11px] font-mono font-bold text-white rounded-full w-6 h-6 flex items-center justify-center ${s.active ? "bg-accent" : "bg-accent"
+                  className={`absolute bottom-0 right-0 translate-x-1 translate-y-1 text-[11px] font-mono font-medium text-white rounded-full w-6 h-6 flex items-center justify-center ${s.active ? "bg-accent" : "bg-accent"
                     }`}
                 >
                   {s.step}
@@ -130,12 +130,12 @@ export function ValueProp() {
               </div>
 
               {/* Step label */}
-              <p className="text-[11px] font-bold tracking-[2px] uppercase text-accent font-mono mb-3">
+              <p className="text-[11px] font-medium tracking-[2px] uppercase text-accent font-mono mb-3">
                 {s.label}
               </p>
 
               {/* Title */}
-              <h3 className="font-serif text-[22px] font-bold text-foreground leading-snug mb-3">
+              <h3 className="font-serif text-[22px] font-medium text-foreground leading-snug mb-3">
                 {s.title}
               </h3>
 
@@ -159,7 +159,7 @@ export function ValueProp() {
         >
           <a
             href="#"
-            className="group inline-flex items-center gap-3 bg-foreground text-background text-[15px] font-semibold font-mono px-8 py-4 rounded-full hover:opacity-90 transition-opacity shadow-lg"
+            className="group inline-flex items-center gap-3 bg-foreground text-background text-[15px] font-medium font-mono px-8 py-4 rounded-full hover:opacity-90 transition-opacity shadow-lg"
           >
             Start Free Trial
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={2.2} />

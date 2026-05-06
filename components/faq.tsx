@@ -65,8 +65,8 @@ export function Faq({ items = defaultFaqs, heading = "Questions about Twiching, 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <div className="max-w-[860px] mx-auto">
-        <p className="text-xs font-bold tracking-[1.5px] uppercase text-accent mb-3 font-mono">FAQ</p>
-        <h2 className="font-serif text-3xl md:text-4xl font-semibold tracking-tight leading-tight mb-10 max-w-[620px]">
+        <p className="text-xs font-medium tracking-[1.5px] uppercase text-accent mb-3 font-mono">FAQ</p>
+        <h2 className="font-serif text-3xl md:text-4xl font-medium tracking-tight leading-tight mb-10 max-w-[620px]">
           {heading}
         </h2>
 
@@ -77,7 +77,7 @@ export function Faq({ items = defaultFaqs, heading = "Questions about Twiching, 
               <div key={f.q} className="px-6 first:rounded-t-3xl last:rounded-b-3xl">
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className={`faq-btn ${isOpen ? "open" : ""} w-full flex justify-between items-center gap-4 py-5 text-left text-base font-semibold text-black bg-transparent border-none cursor-pointer`}
+                  className={`faq-btn ${isOpen ? "open" : ""} w-full flex justify-between items-center gap-4 py-5 text-left text-base font-medium text-black bg-transparent border-none cursor-pointer`}
                 >
                   <span className="font-serif text-lg">{f.q}</span>
                   <span

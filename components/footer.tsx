@@ -73,7 +73,7 @@ export function Footer() {
           {/* Link cols */}
           {cols.map((col) => (
             <div key={col.title} className="min-w-0">
-              <div className="text-[10px] font-bold tracking-[2px] uppercase text-gray-500 mb-4 font-mono">
+              <div className="text-[10px] font-medium tracking-[2px] uppercase text-gray-500 mb-4 font-mono">
                 {col.title}
               </div>
               <ul className="space-y-3">
@@ -82,7 +82,7 @@ export function Footer() {
                     <a
                       href={l.href}
                       className={`text-sm font-mono transition-colors ${l.highlight
-                        ? "text-[#1abcd9] font-semibold"
+                        ? "text-[#1abcd9] font-medium"
                         : "text-gray-400 hover:text-white"
                         }`}
                     >

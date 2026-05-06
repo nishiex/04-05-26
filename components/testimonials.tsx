@@ -49,10 +49,10 @@ export function Testimonials({
       className="py-14 md:py-20 px-[5%] bg-white"
     >
       <div className="max-w-[1120px] mx-auto">
-        <p className="text-xs font-bold tracking-[1.5px] uppercase text-accent mb-3 font-mono">
+        <p className="text-xs font-medium tracking-[1.5px] uppercase text-accent mb-3 font-mono">
           {eyebrow}
         </p>
-        <h2 className="font-serif text-3xl md:text-4xl font-semibold tracking-tight leading-tight mb-12 max-w-[680px]">
+        <h2 className="font-serif text-3xl md:text-4xl font-medium tracking-tight leading-tight mb-12 max-w-[680px]">
           {heading}
         </h2>
 
@@ -68,11 +68,11 @@ export function Testimonials({
                 dangerouslySetInnerHTML={{ __html: `&ldquo;${q.quote}&rdquo;` }}
               />
               <figcaption className="flex items-center gap-3 border-t border-gray-100 pt-5">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#95d9e8]/40 to-[#95d9e8]/70 grid place-items-center text-accent font-bold text-sm font-mono">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#95d9e8]/40 to-[#95d9e8]/70 grid place-items-center text-accent font-medium text-sm font-mono">
                   {q.initial}
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">{q.name}</div>
+                  <div className="text-sm font-medium">{q.name}</div>
                   <div className="text-xs text-gray-500 font-mono">{q.role}</div>
                 </div>
               </figcaption>

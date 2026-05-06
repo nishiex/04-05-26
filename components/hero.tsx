@@ -94,7 +94,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="hero-eyebrow inline-flex items-center gap-2 bg-white/70 backdrop-blur border border-[#95d9e8]/50 text-accent text-xs font-semibold font-mono px-4 py-[6px] rounded-full mb-7 shadow-[0_1px_0_rgba(255,255,255,0.8)_inset,0_6px_20px_-12px_rgba(26,188,217,0.4)]"
+              className="hero-eyebrow inline-flex items-center gap-2 bg-white/70 backdrop-blur border border-[#95d9e8]/50 text-accent text-xs font-medium font-mono px-4 py-[6px] rounded-full mb-7 shadow-[0_1px_0_rgba(255,255,255,0.8)_inset,0_6px_20px_-12px_rgba(26,188,217,0.4)]"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
@@ -103,7 +103,7 @@ export function Hero() {
               CLOUD PHONE · VOICE · SMS · AI
             </motion.div>
 
-            <h1 className="hero-title font-serif text-4xl md:text-5xl lg:text-[52px] font-semibold leading-[1.06] tracking-tighter2 mb-6 text-balance">
+            <h1 className="hero-title font-serif text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.06] tracking-tighter2 mb-6 text-balance">
               <span className="block">
                 {titleLine1.map((w, i) => (
                   <span key={`a-${i}`} className="hero-word inline-block mr-[0.18em]">
@@ -132,7 +132,7 @@ export function Hero() {
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className="group inline-flex items-center gap-2 bg-accent text-white text-[15px] font-semibold font-mono pl-7 pr-3 py-2 rounded-full hover:bg-[color:var(--accent-dark)] shadow-[0_8px_24px_-6px_rgba(26,188,217,0.45)]"
+                className="group inline-flex items-center gap-2 bg-accent text-white text-[15px] font-medium font-mono pl-7 pr-3 py-2 rounded-full hover:bg-[color:var(--accent-dark)] shadow-[0_8px_24px_-6px_rgba(26,188,217,0.45)]"
               >
                 Request a Demo
                 <span className="grid place-items-center h-8 w-8 rounded-full bg-white/15 ring-1 ring-inset ring-white/25 transition-transform group-hover:translate-x-0.5">
@@ -321,7 +321,7 @@ function LiveShowcase() {
           </div>
           <div className="flex items-center gap-2">
             <PulseDot />
-            <span className="text-[11px] font-mono font-bold tracking-[1.5px] uppercase text-emerald-600">
+            <span className="text-[11px] font-mono font-medium tracking-[1.5px] uppercase text-emerald-600">
               Live activity
             </span>
           </div>
@@ -368,11 +368,11 @@ function ActivityRow({ item }: { item: Activity }) {
         <Icon className="h-4 w-4" strokeWidth={2} />
       </span>
       <div className="flex-1 min-w-0 text-left">
-        <p className="text-sm font-semibold text-gray-900 font-mono truncate">{item.title}</p>
+        <p className="text-sm font-medium text-gray-900 font-mono truncate">{item.title}</p>
         <p className="text-[12px] text-gray-500 truncate">{item.detail}</p>
       </div>
       <span
-        className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-mono font-bold tracking-[1.5px] uppercase ${t.bg} ${t.text} ring-1 ${t.ring}`}
+        className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-mono font-medium tracking-[1.5px] uppercase ${t.bg} ${t.text} ring-1 ${t.ring}`}
       >
         <motion.span
           className={`inline-block h-1.5 w-1.5 rounded-full ${t.dot}`}
@@ -433,10 +433,10 @@ function OrbitRing() {
 function FooterStat({ label, value, sub }: { label: string; value: string; sub: string }) {
   return (
     <div className="px-5 py-4 text-left">
-      <p className="text-[10px] font-mono font-bold tracking-[1.5px] uppercase text-gray-400">
+      <p className="text-[10px] font-mono font-medium tracking-[1.5px] uppercase text-gray-400">
         {label}
       </p>
-      <p className="font-serif text-2xl font-semibold text-gray-900 mt-0.5 leading-none">
+      <p className="font-serif text-2xl font-medium text-gray-900 mt-0.5 leading-none">
         {value}
       </p>
       <p className="text-[11px] text-gray-500 font-mono mt-1">{sub}</p>

@@ -29,8 +29,6 @@ const ucaasCapabilities = [
   { title: "Toll-Free Numbers",       href: "/phone-numbers/toll-free" },
   { title: "Business Phone Number",   href: "/phone-numbers/business" },
   { title: "Second Phone Number",     href: "/phone-numbers/second-number" },
-  { title: "Voice Termination",       href: "/voice/termination" },
-  { title: "SIP Termination",         href: "/voice/sip-termination" },
   { title: "SMS Gateway",             href: "/messaging/sms-gateway" },
   { title: "Bulk SMS",                href: "/messaging/bulk-sms" },
 ]
@@ -48,8 +46,6 @@ const contactCenterAI = [
 
 /* ─── Voice data (kept for mobile) ──────────────────────────── */
 const voiceCol1 = [
-  { title: "Voice Termination", Icon: PhoneCall, href: "/voice/termination" },
-  { title: "SIP Termination",   Icon: Network,   href: "/voice/sip-termination" },
   { title: "Omnichannel",       Icon: Headphones, href: "/voice/contact-center" },
 ]
 const voiceFeatures = [
@@ -118,7 +114,7 @@ function Chevron({ open }: { open: boolean }) {
 
 function ColHeading({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[10px] font-mono font-bold tracking-[1.4px] uppercase text-gray-400 mb-3">
+    <p className="text-[10px] font-mono font-medium tracking-[1.4px] uppercase text-gray-400 mb-3">
       {children}
     </p>
   )
@@ -128,13 +124,13 @@ function FeaturedCard({ headline, sub }: { headline: string; sub: string }) {
   return (
     <div className="rounded-2xl bg-[#F5F5F5] p-5 flex flex-col justify-between h-full min-h-[180px]">
       <div>
-        <p className="text-[11px] font-mono font-bold tracking-[1.2px] uppercase text-[#1abcd9] mb-3">Featured</p>
-        <p className="text-[15px] font-semibold text-black leading-snug mb-2">{headline}</p>
+        <p className="text-[11px] font-mono font-medium tracking-[1.2px] uppercase text-[#1abcd9] mb-3">Featured</p>
+        <p className="text-[15px] font-medium text-black leading-snug mb-2">{headline}</p>
         <p className="text-[13px] text-gray-500 leading-relaxed">{sub}</p>
       </div>
       <a
         href="/pricing"
-        className="mt-4 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[13px] font-semibold font-mono px-4 py-2 rounded-full hover:bg-[#1797ac] transition-colors self-start"
+        className="mt-4 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[13px] font-medium font-mono px-4 py-2 rounded-full hover:bg-[#1797ac] transition-colors self-start"
       >
         Start Free Trial
         <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.2} />
@@ -156,7 +152,7 @@ function LinkRow({
         <Icon className="h-3.5 w-3.5" strokeWidth={1.8} />
       </span>
       <span>
-        <span className="block text-[13px] font-semibold text-black leading-tight">{title}</span>
+        <span className="block text-[13px] font-medium text-black leading-tight">{title}</span>
         {desc && <span className="block text-[11px] text-gray-500 mt-0.5 leading-relaxed">{desc}</span>}
       </span>
     </a>
@@ -196,7 +192,7 @@ function ProductPanel({ close }: { close: () => void }) {
                 onClick={close}
                 className="block px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
               >
-                <span className="block text-[14px] font-semibold text-gray-900 group-hover:text-[#1abcd9] transition-colors leading-tight">{title}</span>
+                <span className="block text-[14px] font-medium text-gray-900 group-hover:text-[#1abcd9] transition-colors leading-tight">{title}</span>
                 <span className="block text-[12px] text-gray-400 mt-0.5 leading-snug">{sub}</span>
               </a>
             </li>
@@ -243,7 +239,7 @@ function ProductPanel({ close }: { close: () => void }) {
       {/* Col 4 — Promo */}
       <div className="pl-8 flex flex-col justify-between">
         <div>
-          <p className="text-[18px] font-bold text-gray-900 leading-snug mb-3">
+          <p className="text-[18px] font-medium text-gray-900 leading-snug mb-3">
             One platform.<br />Every conversation.
           </p>
           <p className="text-[13px] text-gray-500 leading-relaxed">
@@ -253,7 +249,7 @@ function ProductPanel({ close }: { close: () => void }) {
         <a
           href="/contact"
           onClick={close}
-          className="mt-6 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-semibold font-sans px-5 py-2.5 rounded-full hover:bg-[#1797ac] transition-colors self-start"
+          className="mt-6 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-medium font-sans px-5 py-2.5 rounded-full hover:bg-[#1797ac] transition-colors self-start"
         >
           Get A Free Trial
           <ArrowRight className="h-4 w-4" strokeWidth={2} />
@@ -313,7 +309,7 @@ function SolutionsPanel({ close }: { close: () => void }) {
                 onClick={close}
                 className="block px-2 py-2 rounded-lg hover:bg-slate-50 transition-colors group"
               >
-                <span className="block text-[14px] font-semibold text-gray-900 group-hover:text-[#1abcd9] transition-colors leading-tight whitespace-nowrap">{title}</span>
+                <span className="block text-[14px] font-medium text-gray-900 group-hover:text-[#1abcd9] transition-colors leading-tight whitespace-nowrap">{title}</span>
                 <span className="block text-[12px] text-gray-400 mt-0.5 leading-snug">{sub}</span>
               </a>
             </li>
@@ -324,7 +320,7 @@ function SolutionsPanel({ close }: { close: () => void }) {
       {/* Col 4 — Promo */}
       <div className="pl-8 flex flex-col justify-between">
         <div>
-          <p className="text-[18px] font-bold text-gray-900 leading-snug mb-3">
+          <p className="text-[18px] font-medium text-gray-900 leading-snug mb-3">
             Built for every team,<br />every industry.
           </p>
           <p className="text-[13px] text-gray-500 leading-relaxed">
@@ -332,7 +328,7 @@ function SolutionsPanel({ close }: { close: () => void }) {
           </p>
         </div>
         <a href="/contact" onClick={close}
-          className="mt-6 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-semibold font-sans px-5 py-2.5 rounded-full hover:bg-[#1797ac] transition-colors self-start">
+          className="mt-6 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-medium font-sans px-5 py-2.5 rounded-full hover:bg-[#1797ac] transition-colors self-start">
           Get A Free Trial
           <ArrowRight className="h-4 w-4" strokeWidth={2} />
         </a>
@@ -379,7 +375,7 @@ function ResourcesPanel({ close }: { close: () => void }) {
       {/* Col 4 — Promo */}
       <div className="pl-8 flex flex-col justify-between">
         <div>
-          <p className="text-[18px] font-bold text-gray-900 leading-snug mb-3">
+          <p className="text-[18px] font-medium text-gray-900 leading-snug mb-3">
             Everything you need<br />to get started.
           </p>
           <p className="text-[13px] text-gray-500 leading-relaxed">
@@ -387,7 +383,7 @@ function ResourcesPanel({ close }: { close: () => void }) {
           </p>
         </div>
         <a href="/contact" onClick={close}
-          className="mt-6 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-semibold font-sans px-5 py-2.5 rounded-full hover:bg-[#1797ac] transition-colors self-start">
+          className="mt-6 inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-medium font-sans px-5 py-2.5 rounded-full hover:bg-[#1797ac] transition-colors self-start">
           Get A Free Trial
           <ArrowRight className="h-4 w-4" strokeWidth={2} />
         </a>
@@ -418,7 +414,7 @@ export function MegaNav() {
     <>
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded focus:outline-[2px] focus:outline-[#1abcd9] focus:outline-offset-2 text-sm font-semibold"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded focus:outline-[2px] focus:outline-[#1abcd9] focus:outline-offset-2 text-sm font-medium"
       >
         Skip to content
       </a>
@@ -512,7 +508,7 @@ export function MegaNav() {
             </a>
             <a
               href="/pricing"
-              className="inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-semibold font-sans px-5 py-2 rounded-full hover:bg-[#1797ac] transition-colors"
+              className="inline-flex items-center gap-1.5 bg-[#1abcd9] text-white text-[14px] font-medium font-sans px-5 py-2 rounded-full hover:bg-[#1797ac] transition-colors"
             >
               Start Free Trial
             </a>
@@ -569,14 +565,14 @@ export function MegaNav() {
             <div>
               <button
                 onClick={() => setMobileSection(mobileSection === "product" ? null : "product")}
-                className="w-full flex items-center justify-between h-14 px-3 rounded-xl text-gray-800 font-semibold text-[15px] hover:bg-slate-50 transition-colors"
+                className="w-full flex items-center justify-between h-14 px-3 rounded-xl text-gray-800 font-medium text-[15px] hover:bg-slate-50 transition-colors"
               >
                 Product
                 <Chevron open={mobileSection === "product"} />
               </button>
               {mobileSection === "product" && (
                 <div className="ml-2 mb-2 space-y-1">
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-1 pb-1">Phone Numbers</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-1 pb-1">Phone Numbers</p>
                   {numbersCol1.map(({ title, Icon, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -586,7 +582,7 @@ export function MegaNav() {
                       {title}
                     </a>
                   ))}
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Voice</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Voice</p>
                   {voiceCol1.map(({ title, Icon, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -596,7 +592,7 @@ export function MegaNav() {
                       {title}
                     </a>
                   ))}
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Messaging</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Messaging</p>
                   {messagingCol1.map(({ title, Icon, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -606,7 +602,7 @@ export function MegaNav() {
                       {title}
                     </a>
                   ))}
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Call Features</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Call Features</p>
                   {voiceFeatures.map(({ title, Icon, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -624,14 +620,14 @@ export function MegaNav() {
             <div>
               <button
                 onClick={() => setMobileSection(mobileSection === "solutions" ? null : "solutions")}
-                className="w-full flex items-center justify-between h-14 px-3 rounded-xl text-gray-800 font-semibold text-[15px] hover:bg-slate-50 transition-colors"
+                className="w-full flex items-center justify-between h-14 px-3 rounded-xl text-gray-800 font-medium text-[15px] hover:bg-slate-50 transition-colors"
               >
                 Solutions
                 <Chevron open={mobileSection === "solutions"} />
               </button>
               {mobileSection === "solutions" && (
                 <div className="ml-2 mb-2 space-y-1">
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-1 pb-1">By Industry</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-1 pb-1">By Industry</p>
                   {solutionsByIndustry.map(({ title, Icon, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -641,7 +637,7 @@ export function MegaNav() {
                       {title}
                     </a>
                   ))}
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">By Role</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">By Role</p>
                   {solutionsByRole.map(({ title, Icon, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -651,7 +647,7 @@ export function MegaNav() {
                       {title}
                     </a>
                   ))}
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Integrations</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Integrations</p>
                   {integrations.map(({ title, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex flex-col justify-center px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -666,14 +662,14 @@ export function MegaNav() {
             <div>
               <button
                 onClick={() => setMobileSection(mobileSection === "resources" ? null : "resources")}
-                className="w-full flex items-center justify-between h-14 px-3 rounded-xl text-gray-800 font-semibold text-[15px] hover:bg-slate-50 transition-colors"
+                className="w-full flex items-center justify-between h-14 px-3 rounded-xl text-gray-800 font-medium text-[15px] hover:bg-slate-50 transition-colors"
               >
                 Resources
                 <Chevron open={mobileSection === "resources"} />
               </button>
               {mobileSection === "resources" && (
                 <div className="ml-2 mb-2 space-y-1">
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-1 pb-1">Learn</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-1 pb-1">Learn</p>
                   {resourcesCol1.map(({ title, Icon, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -683,7 +679,7 @@ export function MegaNav() {
                       {title}
                     </a>
                   ))}
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Support</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Support</p>
                   {resourcesCol2.map(({ title, Icon, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -693,7 +689,7 @@ export function MegaNav() {
                       {title}
                     </a>
                   ))}
-                  <p className="text-[10px] font-mono font-bold tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Company</p>
+                  <p className="text-[10px] font-mono font-medium tracking-[1.2px] uppercase text-gray-400 px-3 pt-3 pb-1">Company</p>
                   {companyLinks.map(({ title, href }) => (
                     <a key={title} href={href} onClick={() => setMobileOpen(false)}
                       className="flex items-center px-3 h-12 rounded-xl hover:bg-slate-50 transition-colors text-[14px] font-medium text-gray-700">
@@ -708,7 +704,7 @@ export function MegaNav() {
             <a
               href="/pricing"
               onClick={() => setMobileOpen(false)}
-              className="flex items-center h-14 px-3 rounded-xl text-gray-800 font-semibold text-[15px] hover:bg-slate-50 transition-colors"
+              className="flex items-center h-14 px-3 rounded-xl text-gray-800 font-medium text-[15px] hover:bg-slate-50 transition-colors"
             >
               Pricing and plan
             </a>
@@ -724,7 +720,7 @@ export function MegaNav() {
             </a>
             <a
               href="#"
-              className="block text-center py-3 text-[15px] font-semibold text-white bg-[#1abcd9] rounded-full hover:bg-[#1797ac] transition-colors"
+              className="block text-center py-3 text-[15px] font-medium text-white bg-[#1abcd9] rounded-full hover:bg-[#1797ac] transition-colors"
             >
               Start Free Trial
             </a>
