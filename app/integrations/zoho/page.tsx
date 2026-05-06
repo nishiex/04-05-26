@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, NarrativeSection, DarkBand } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, DarkBand } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import {
@@ -96,12 +96,7 @@ export default function ZohoIntegrationPage() {
         { value: "0",      label: "Manual logging",       note: "every call auto-attached" },
       ]} />
 
-      <NarrativeSection paragraphs={[
-        "Your rep answers the phone. The caller's full Zoho record is already open. The call logs itself. The transcript arrives before they move on to the next task.",
-        "No jumping between tabs. No updating records after the fact. Just calls turning into CRM data, automatically, on the platform your team already uses every day.",
-      ]} />
-
-      {/* Feature grid */}
+{/* Feature grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <SectionHeading
           eyebrow="What it does"

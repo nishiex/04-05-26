@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Heart, Shield, Phone, MessageSquare, Clock, Users } from "lucide-react"
@@ -43,13 +43,7 @@ export default function HealthcarePage() {
         { value: "Multi-site", label: "Location support", note: "one account, every location" },
       ]} />
 
-      {/* Narrative */}
-      <NarrativeSection paragraphs={[
-        "A patient calls after hours for an urgent prescription refill. They get a generic voicemail. They go to urgent care instead.",
-        "Twiching routes after-hours calls to on-call staff, urgent lines, or pharmacy teams automatically — so patients get the care they need without flooding your main lines the next morning.",
-      ]} />
-
-      {/* Value grid */}
+{/* Value grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { ShoppingBag, MessageSquare, Phone, BarChart2, Megaphone, Globe } from "lucide-react"
@@ -43,13 +43,7 @@ export default function RetailPage() {
         { value: "Real-time", label: "Campaign analytics", note: "delivery, response, conversion" },
       ]} />
 
-      {/* Narrative */}
-      <NarrativeSection paragraphs={[
-        "Your email promotion went out at 10am. By noon, 18% of the list had opened it.",
-        "The SMS you sent at the same time had a 96% open rate within 3 minutes — and a click-through rate four times higher. For flash sales, pickup notifications, and loyalty outreach, SMS isn't a secondary channel. It's the primary one.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

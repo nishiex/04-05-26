@@ -1,6 +1,6 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Check, Code2, Webhook, MessageSquare, ShieldCheck, Zap, RefreshCw } from "lucide-react"
@@ -59,13 +59,7 @@ export default function SmsApiPage() {
         { value: "Auto", label: "10DLC compliance", note: "carrier registration handled" },
       ]} />
 
-      {/* Narrative opener — preserved from original */}
-      <NarrativeSection paragraphs={[
-        "Your product already handles email. Your users already prefer text.",
-        "The Twiching SMS API puts two-way messaging into your application with a standard REST call — no carrier agreements, no 10DLC navigation, no per-message compliance overhead.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

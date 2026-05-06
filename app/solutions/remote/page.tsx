@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Globe, Users, Phone, MessageSquare, BarChart2, Zap } from "lucide-react"
@@ -43,13 +43,7 @@ export default function RemoteTeamsPage() {
         { value: "Instant", label: "Team scaling", note: "add seats in seconds" },
       ]} />
 
-      {/* Narrative */}
-      <NarrativeSection paragraphs={[
-        "Your team is spread across three time zones. Half are on laptops, the rest on mobiles. Everyone has a different personal number and a different messaging app.",
-        "Twiching gives every team member a single business number that works on any device — calls, SMS, and internal chat unified in one dashboard, from anywhere in the world.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => (

@@ -1,6 +1,6 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Shuffle, Clock, Phone, GitBranch, Globe, Settings } from "lucide-react"
@@ -49,13 +49,7 @@ export default function AutoAttendantPage() {
         { value: "All plans", label: "Included", note: "from Starter upward" },
       ]} />
 
-      {/* Narrative opener */}
-      <NarrativeSection paragraphs={[
-        "Most small businesses lose 30% of inbound calls to voicemail or the wrong person. Your auto-attendant fixes that from day one.",
-        "With Twiching's multi-level IVR, every caller hears a professional greeting, navigates to the right team in seconds, and never hits a dead end — whether you have 2 employees or 200.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Shield, Landmark, Phone, MessageSquare, BarChart2, Lock } from "lucide-react"
@@ -43,13 +43,7 @@ export default function FinancePage() {
         { value: "3×", label: "Higher answer rate", note: "with local area code presence" },
       ]} />
 
-      {/* Narrative */}
-      <NarrativeSection paragraphs={[
-        "A regulator asks for six months of recorded calls by Monday. Your team spends the weekend manually pulling audio files from three different systems.",
-        "Twiching keeps every call encrypted, timestamped, and exportable from day one — so compliance reviews take hours, not weekends.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

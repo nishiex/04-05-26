@@ -1,7 +1,7 @@
 "use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { CallRecordingStory } from "@/components/call-recording-story"
@@ -105,13 +105,7 @@ export default function CallRecordingPage() {
         { value: "AES-256", label: "Encryption at rest", note: "TLS 1.3 in transit" },
       ]} />
 
-      {/* Narrative */}
-      <NarrativeSection paragraphs={[
-        "Storing recordings is cheap. Finding the one that actually mattered — the disputed charge, the compliance breach, the top-performing close — that's where teams lose hours.",
-        "Twiching indexes every word of every call. Keyword search, auto-redaction, role-gated access, and configurable retention. Compliance teams sleep at night. QA finally finds the call.",
-      ]} />
-
-      {/* Feature cards */}
+{/* Feature cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <SectionHeading eyebrow="What's included" h2="A complete recording program, out of the box" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">

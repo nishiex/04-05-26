@@ -1,13 +1,6 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import {
-  PageHero,
-  NarrativeSection,
-  SectionHeading,
-  StatBar,
-  FeatureSplit,
-  ImageSlot,
-} from "@/components/page-parts"
+import { PageHero, SectionHeading, StatBar, FeatureSplit, ImageSlot } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 
@@ -66,16 +59,7 @@ export default function VanityNumberPage() {
       />
 
       {/* ── Narrative opener ───────────────────────────────────── */}
-      <NarrativeSection
-        paragraphs={[
-          "Your customer heard your radio ad on the morning commute.",
-          "Four hours later, they tried to recall the number.",
-          "They got &quot;1-800 something.&quot; Your competitor&apos;s number spelled their brand name. Guess who got the call.",
-          "A vanity number survives a commute, a meeting, and a distracted evening. Ten arbitrary digits don&apos;t.",
-        ]}
-      />
-
-      {/* ── Stats ──────────────────────────────────────────────── */}
+{/* ── Stats ──────────────────────────────────────────────── */}
       <StatBar stats={STATS} />
 
       {/* ── Pattern showcase ───────────────────────────────────── */}

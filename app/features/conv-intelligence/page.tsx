@@ -1,6 +1,6 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Brain, Search, BarChart2, MessageSquare, Shield, Zap } from "lucide-react"
@@ -50,13 +50,7 @@ export default function ConversationIntelligencePage() {
         { value: "Enterprise", label: "Plan availability", note: "full AI feature suite" },
       ]} />
 
-      {/* Narrative opener */}
-      <NarrativeSection paragraphs={[
-        "Most teams review less than 5% of their calls. The other 95% — the objections, the competitor mentions, the missed disclosures — go unheard.",
-        "Twiching's Conversation Intelligence transcribes and scores every call automatically. No sampling. No manual scrubbing. Just structured insight from every conversation your team has.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

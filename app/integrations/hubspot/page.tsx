@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, NarrativeSection, DarkBand } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, DarkBand } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import {
@@ -119,12 +119,7 @@ export default function HubSpotIntegrationPage() {
         { value: "18%",    label: "Connect-to-meeting lift", note: "reported by Twiching customers" },
       ]} />
 
-      <NarrativeSection paragraphs={[
-        "Your rep dials from HubSpot, closes the call, and moves on. The recording, transcript, and outcome are already on the deal — searchable, shareable, and ready for the next touch.",
-        "No manual logging. No switching tabs. No chasing down what was said. Just conversations turning into pipeline data, automatically.",
-      ]} />
-
-      {/* Feature grid */}
+{/* Feature grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <SectionHeading
           eyebrow="What lives on the timeline"

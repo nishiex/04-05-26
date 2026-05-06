@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Headphones, Phone, MessageSquare, BarChart2, Clock, Workflow } from "lucide-react"
@@ -43,13 +43,7 @@ export default function SupportPage() {
         { value: "No-code", label: "IVR builder", note: "routing flows without engineering" },
       ]} />
 
-      {/* Narrative */}
-      <NarrativeSection paragraphs={[
-        "A customer submits a support ticket, sends a follow-up SMS, then calls your main line. Three different channels, three different queues, no shared context.",
-        "Twiching puts every channel into one inbox — so the agent who picks up the call already sees the ticket and the SMS thread. No asking the customer to repeat themselves.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => (

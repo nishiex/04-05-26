@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, NarrativeSection, DarkBand } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, DarkBand } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { MessageSquare, Hash, Bell, Search, Paperclip, Users, Phone, Lock } from "lucide-react"
@@ -86,11 +86,7 @@ export default function TeamChatPage() {
         { value: "E2E",     label: "Encrypted",           note: "at rest and in transit" },
       ]} />
 
-      <NarrativeSection paragraphs={[
-        "Switching between a chat app, a phone system, and a video tool burns more time than most teams realise. Context gets lost at every handoff.",
-        "Twiching Team Chat keeps messaging, voice, and video in one place. Every conversation is already connected to your call history and CRM — so your team has full context, every time.",
-      ]} />
-
+     
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <SectionHeading eyebrow="What's included" h2="A complete messaging platform, built for teams that also call" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">

@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Package, MessageSquare, Phone, MapPin, Clock, Users } from "lucide-react"
@@ -43,13 +43,7 @@ export default function LogisticsPage() {
         { value: "Fleet-wide", label: "Broadcast SMS", note: "reach every driver instantly" },
       ]} />
 
-      {/* Narrative */}
-      <NarrativeSection paragraphs={[
-        "A driver arrives at the delivery address. Nobody's home. The package goes back to the depot. The customer calls your support line furious.",
-        "Twiching sends an automated SMS 30 minutes before arrival — customers prepare, answer rates improve, missed deliveries drop. No integration required beyond an API call.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

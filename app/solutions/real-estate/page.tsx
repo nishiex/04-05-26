@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Home, Phone, MessageSquare, MapPin, UserCheck, PhoneCall } from "lucide-react"
@@ -44,13 +44,7 @@ export default function RealEstatePage() {
         { value: "Instant", label: "Number reassignment", note: "when agents leave or join" },
       ]} />
 
-      {/* Narrative */}
-      <NarrativeSection paragraphs={[
-        "A buyer calls the yard sign number at 8pm. It rings the agent's personal mobile, which goes to voicemail. The buyer calls a competitor listing instead.",
-        "Twiching gives every agent a dedicated professional number. After-hours calls hear property details via IVR, can leave a voicemail, and get a transcription emailed to the agent by morning.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

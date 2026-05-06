@@ -1,6 +1,6 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Send, ShieldCheck, BarChart2, Sliders, RefreshCw, MessageSquare } from "lucide-react"
@@ -51,13 +51,7 @@ export default function BulkSmsPage() {
         { value: "All plans", label: "Available", note: "volume scales with plan" },
       ]} />
 
-      {/* Narrative opener — preserved from original */}
-      <NarrativeSection paragraphs={[
-        "Your email campaign got a 22% open rate. The SMS you sent the same week got 96%.",
-        "Bulk SMS isn't a backup channel. For time-sensitive outreach — flash sales, appointment reminders, event alerts, renewal nudges — it's the primary one.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

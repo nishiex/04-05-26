@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 /* ------------------------------------------------------------------ */
 /*  Hooks                                                              */
@@ -49,258 +49,238 @@ function useCountUp(target: number, start: boolean, duration = 1400, decimals = 
 }
 
 /* ------------------------------------------------------------------ */
-/*  Cards                                                              */
+/*  Phone screens — the visceral compare                               */
 /* ------------------------------------------------------------------ */
 
-/* Headline card — the 4× answer rate, with a before/after bar visual */
-function HeadlineCard({ start }: { start: boolean }) {
-  const num = useCountUp(4, start, 1400)
-  const beforeW = useCountUp(15, start, 1400)
-  const afterW = useCountUp(60, start, 1600)
+function PhoneFrame({
+  variant,
+  caller,
+  subline,
+  ringtag,
+  start,
+}: {
+  variant: "declined" | "answered"
+  caller: string
+  subline: string
+  ringtag: string
+  start: boolean
+}) {
+  const isAnswered = variant === "answered"
+  const accent = isAnswered ? "#1abcd9" : "#6b7280"
 
   return (
-    <article
-      className="relative col-span-12 lg:col-span-7 row-span-2 rounded-3xl p-8 md:p-12 overflow-hidden
-                 bg-gradient-to-br from-[#0c1115] via-[#10181d] to-[#0a0f12]
-                 border border-white/5"
-    >
-      {/* Aurora glow */}
-      <div
-        aria-hidden
-        className="absolute -top-32 -right-24 h-[420px] w-[420px] rounded-full opacity-60 blur-3xl pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(26,188,217,0.45), rgba(26,188,217,0) 70%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute -bottom-40 -left-24 h-[380px] w-[380px] rounded-full opacity-40 blur-3xl pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(149,217,232,0.35), rgba(149,217,232,0) 70%)",
-        }}
-      />
-
-      <div className="relative flex flex-col h-full">
-        <div className="flex items-center gap-2 mb-8">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#95d9e8] animate-pulse" />
-          <span className="text-[11px] font-mono tracking-[1.5px] uppercase text-[#95d9e8]">
-            Headline metric
-          </span>
-        </div>
-
-        <div className="flex items-baseline gap-3">
-          <span className="font-serif text-[120px] md:text-[180px] leading-[0.85] text-white tabular-nums">
-            {num}
-          </span>
-          <span className="font-serif text-5xl md:text-7xl text-[#95d9e8]">×</span>
-        </div>
-
-        <h3 className="mt-6 text-xl md:text-2xl font-serif text-white max-w-md leading-snug">
-          Answer rate when the caller ID matches a local area code.
-        </h3>
-        <p className="mt-3 text-sm text-gray-400 leading-relaxed max-w-md">
-          Unknown prefixes get screened. Recognized ones get picked up. The math compounds across
-          every rep, every day.
-        </p>
-
-        {/* Before / after visual */}
-        <div className="mt-8 md:mt-auto pt-8 space-y-4">
-          <div>
-            <div className="flex justify-between text-[11px] font-mono uppercase tracking-wider mb-2">
-              <span className="text-gray-500">Unknown prefix</span>
-              <span className="text-gray-400 tabular-nums">{beforeW}% answer</span>
-            </div>
-            <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gray-600 rounded-full transition-[width] duration-700"
-                style={{ width: `${beforeW}%` }}
-              />
-            </div>
-          </div>
-          <div>
-            <div className="flex justify-between text-[11px] font-mono uppercase tracking-wider mb-2">
-              <span className="text-[#95d9e8]">Local area code</span>
-              <span className="text-[#95d9e8] tabular-nums">{afterW}% answer</span>
-            </div>
-            <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-              <div
-                className="h-full rounded-full transition-[width] duration-700"
-                style={{
-                  width: `${afterW}%`,
-                  background: "linear-gradient(90deg, #1abcd9, #95d9e8)",
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-  )
-}
-
-/* Conversations recovered — sparkline */
-function ConversationsCard({ start }: { start: boolean }) {
-  const num = useCountUp(60, start, 1400)
-  // simple ascending sparkline points
-  const points = useMemo(() => {
-    const xs = [0, 14, 28, 42, 56, 70, 84, 100]
-    const ys = [62, 58, 50, 46, 38, 30, 22, 14]
-    return xs.map((x, i) => `${x},${ys[i]}`).join(" ")
-  }, [])
-
-  return (
-    <article
-      className="relative col-span-12 sm:col-span-6 lg:col-span-5 rounded-3xl p-8 overflow-hidden
-                 bg-[#f4f1ea] border border-black/5"
-    >
-      <div className="flex items-center justify-between mb-6">
-        <span className="text-[11px] font-mono tracking-[1.5px] uppercase text-gray-500">
-          Per rep / week
+    <div className="relative">
+      {/* Editorial caption above the phone */}
+      <div className="flex items-center gap-2 mb-5">
+        <span
+          className="text-[10px] font-mono tracking-[2px] uppercase"
+          style={{ color: isAnswered ? "#0f7a8e" : "#9ca3af" }}
+        >
+          {isAnswered ? "Local area code" : "Unknown prefix"}
         </span>
-        <span className="text-[11px] font-mono text-gray-400">200 dials baseline</span>
-      </div>
-
-      <div className="flex items-baseline gap-2">
-        <span className="font-serif text-7xl md:text-8xl text-gray-900 tabular-nums leading-none">
-          +{num}
+        <span className="h-px flex-1" style={{ background: isAnswered ? "#0f7a8e33" : "#d1d5db" }} />
+        <span
+          className="text-[10px] font-mono tabular-nums"
+          style={{ color: isAnswered ? "#0f7a8e" : "#9ca3af" }}
+        >
+          {isAnswered ? "60% answer" : "15% answer"}
         </span>
       </div>
 
-      <p className="mt-4 text-base font-serif text-gray-900 leading-snug">
-        Extra conversations recovered weekly.
-      </p>
-      <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-        15% → 45% answer rate, no extra dials, no new headcount.
-      </p>
-
-      {/* Sparkline */}
-      <svg
-        viewBox="0 0 100 70"
-        className="mt-6 w-full h-16"
-        preserveAspectRatio="none"
-        aria-hidden
+      {/* Phone body */}
+      <div
+        className={`relative mx-auto rounded-[40px] p-3 transition-transform duration-700 ${
+          isAnswered ? "rotate-[-2deg]" : "rotate-[2deg]"
+        }`}
+        style={{
+          width: "min(100%, 320px)",
+          background: isAnswered ? "#0c1115" : "#1a1a1a",
+          boxShadow: isAnswered
+            ? "0 30px 60px -20px rgba(26,188,217,0.35), 0 0 0 1px rgba(149,217,232,0.18)"
+            : "0 30px 60px -25px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.04)",
+        }}
       >
-        <defs>
-          <linearGradient id="sparkFill" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#1abcd9" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#1abcd9" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <polygon points={`0,70 ${points} 100,70`} fill="url(#sparkFill)" />
-        <polyline
-          points={points}
-          fill="none"
-          stroke="#0f7a8e"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <circle cx="100" cy="14" r="2.5" fill="#0f7a8e" />
-      </svg>
-    </article>
+        {/* Notch */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-3 h-5 w-24 rounded-full bg-black/80 z-10" />
+
+        <div
+          className="relative rounded-[28px] overflow-hidden h-[440px] flex flex-col"
+          style={{
+            background: isAnswered
+              ? "linear-gradient(170deg, #0a1a20 0%, #0c1115 55%, #061013 100%)"
+              : "linear-gradient(170deg, #1a1a1a 0%, #0d0d0d 100%)",
+          }}
+        >
+          {/* Status bar */}
+          <div className="flex justify-between items-center px-6 pt-7 text-[10px] font-mono text-white/70">
+            <span>9:41</span>
+            <span className="flex gap-1 items-center">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/70" />
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/70" />
+              <span className="inline-block h-2 w-3 border border-white/60 rounded-sm" />
+            </span>
+          </div>
+
+          {/* Incoming label */}
+          <div className="px-6 mt-10 text-center">
+            <p className="text-[11px] font-mono uppercase tracking-[2px] text-white/40">
+              {isAnswered ? "Incoming · accepted" : "Incoming · declined"}
+            </p>
+          </div>
+
+          {/* Avatar with pulse */}
+          <div className="flex-1 flex flex-col items-center justify-center -mt-2">
+            <div className="relative">
+              {isAnswered && start && (
+                <>
+                  <span
+                    className="absolute inset-0 rounded-full animate-ping"
+                    style={{ background: "rgba(26,188,217,0.25)" }}
+                  />
+                  <span
+                    className="absolute inset-[-12px] rounded-full"
+                    style={{
+                      background: "rgba(26,188,217,0.08)",
+                      animation: "ping 2.4s cubic-bezier(0,0,0.2,1) infinite",
+                    }}
+                  />
+                </>
+              )}
+              <div
+                className="relative h-24 w-24 rounded-full flex items-center justify-center font-serif text-3xl"
+                style={{
+                  background: isAnswered
+                    ? "linear-gradient(135deg, #1abcd9, #0f7a8e)"
+                    : "#2a2a2a",
+                  color: isAnswered ? "#0c1115" : "#666",
+                }}
+              >
+                {isAnswered ? "MK" : "?"}
+              </div>
+            </div>
+
+            <p
+              className="mt-6 font-serif text-2xl"
+              style={{ color: isAnswered ? "white" : "#9ca3af" }}
+            >
+              {caller}
+            </p>
+            <p
+              className="mt-1 text-[11px] font-mono tracking-wider"
+              style={{ color: isAnswered ? "#95d9e8" : "#5a5a5a" }}
+            >
+              {subline}
+            </p>
+          </div>
+
+          {/* Waveform / dead-line */}
+          <div className="px-6 pb-2 h-10 flex items-center justify-center gap-[3px]">
+            {Array.from({ length: 24 }).map((_, i) => {
+              const heights = [20, 35, 60, 45, 75, 90, 55, 30, 65, 80, 40, 70, 85, 50, 25, 55, 70, 45, 30, 60, 80, 55, 35, 20]
+              return (
+                <span
+                  key={i}
+                  className="w-[3px] rounded-full"
+                  style={{
+                    height: isAnswered && start ? `${heights[i]}%` : "12%",
+                    background: isAnswered ? accent : "#3a3a3a",
+                    transition: "height 600ms cubic-bezier(0.2,0.8,0.2,1)",
+                    transitionDelay: `${i * 30}ms`,
+                    opacity: isAnswered ? 1 : 0.6,
+                  }}
+                />
+              )
+            })}
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex justify-around items-center pb-10 pt-3">
+            <button
+              type="button"
+              tabIndex={-1}
+              className="h-14 w-14 rounded-full flex items-center justify-center"
+              style={{
+                background: isAnswered ? "#1f1f1f" : "#dc2626",
+                opacity: isAnswered ? 0.5 : 1,
+              }}
+              aria-hidden
+            >
+              <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="currentColor">
+                <path d="M21 15.46l-5.27-.61-2.52 2.52a15.05 15.05 0 0 1-6.59-6.58l2.53-2.53L8.54 3H3a18 18 0 0 0 18 18v-5.54z" transform="rotate(135 12 12)" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              tabIndex={-1}
+              className="h-14 w-14 rounded-full flex items-center justify-center"
+              style={{
+                background: isAnswered ? "#10b981" : "#1f1f1f",
+                opacity: isAnswered ? 1 : 0.5,
+              }}
+              aria-hidden
+            >
+              <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="currentColor">
+                <path d="M21 15.46l-5.27-.61-2.52 2.52a15.05 15.05 0 0 1-6.59-6.58l2.53-2.53L8.54 3H3a18 18 0 0 0 18 18v-5.54z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Side buttons */}
+        <span className="absolute -left-[3px] top-24 h-12 w-1 rounded-l bg-black/60" />
+        <span className="absolute -left-[3px] top-40 h-16 w-1 rounded-l bg-black/60" />
+        <span className="absolute -right-[3px] top-32 h-20 w-1 rounded-l bg-black/60" />
+      </div>
+
+      {/* Tag below */}
+      <div className="mt-5 text-center">
+        <span
+          className="inline-block px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-[1.5px]"
+          style={{
+            background: isAnswered ? "#0f7a8e" : "#e5e7eb",
+            color: isAnswered ? "#fff" : "#6b7280",
+          }}
+        >
+          {ringtag}
+        </span>
+      </div>
+    </div>
   )
 }
 
-/* Uptime — live status pulse */
-function UptimeCard({ start }: { start: boolean }) {
-  const num = useCountUp(99.99, start, 1500, 2)
+/* ------------------------------------------------------------------ */
+/*  Numbered ledger — editorial supporting stats                        */
+/* ------------------------------------------------------------------ */
+
+function LedgerEntry({
+  index,
+  value,
+  suffix,
+  label,
+  detail,
+}: {
+  index: string
+  value: string
+  suffix?: string
+  label: string
+  detail: string
+}) {
   return (
-    <article
-      className="relative col-span-12 sm:col-span-6 lg:col-span-3 rounded-3xl p-8 overflow-hidden
-                 bg-[#0c1115] border border-white/5 text-white"
-    >
-      <div className="flex items-center justify-between mb-6">
-        <span className="text-[11px] font-mono tracking-[1.5px] uppercase text-gray-400">
-          Uptime SLA
+    <div className="relative pl-6 md:pl-8 py-6">
+      <span className="absolute left-0 top-7 text-[10px] font-mono text-gray-400 tracking-wider">
+        {index}
+      </span>
+      <div className="flex items-baseline gap-1">
+        <span className="font-serif text-5xl md:text-6xl text-gray-900 tabular-nums leading-none">
+          {value}
         </span>
-        <span className="flex items-center gap-1.5">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-          </span>
-          <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">
-            Live
-          </span>
-        </span>
+        {suffix && (
+          <span className="font-serif text-3xl md:text-4xl text-[#0f7a8e]">{suffix}</span>
+        )}
       </div>
-
-      <div className="flex items-baseline">
-        <span className="font-serif text-6xl md:text-7xl text-white tabular-nums leading-none">
-          {num.toFixed(2)}
-        </span>
-        <span className="font-serif text-3xl md:text-4xl text-[#95d9e8]">%</span>
-      </div>
-
-      <p className="mt-4 text-sm text-gray-300 leading-relaxed">
-        Carrier-grade redundancy. Real status page. No quiet outages.
-      </p>
-
-      {/* tiny barcode-style uptime ticks */}
-      <div className="mt-6 flex gap-[2px] h-6 items-end">
-        {Array.from({ length: 28 }).map((_, i) => (
-          <span
-            key={i}
-            className="flex-1 rounded-sm"
-            style={{
-              height: `${60 + ((i * 13) % 40)}%`,
-              background: i === 19 ? "#f59e0b" : "rgba(149,217,232,0.55)",
-            }}
-          />
-        ))}
-      </div>
-      <div className="mt-2 flex justify-between text-[10px] font-mono text-gray-500">
-        <span>30d</span>
-        <span>now</span>
-      </div>
-    </article>
-  )
-}
-
-/* Area code coverage — chip grid */
-function AreaCodesCard({ start }: { start: boolean }) {
-  const num = useCountUp(200, start, 1400)
-  const codes = ["212", "305", "415", "312", "404", "617", "713", "206", "702", "503"]
-
-  return (
-    <article
-      className="relative col-span-12 lg:col-span-5 rounded-3xl p-8 overflow-hidden
-                 bg-white border border-black/5"
-    >
-      <div className="flex items-center justify-between mb-6">
-        <span className="text-[11px] font-mono tracking-[1.5px] uppercase text-gray-500">
-          Coverage
-        </span>
-        <span className="text-[11px] font-mono text-gray-400">Nationwide</span>
-      </div>
-
-      <div className="flex items-baseline gap-2">
-        <span className="font-serif text-7xl md:text-8xl text-gray-900 tabular-nums leading-none">
-          {num}
-        </span>
-        <span className="font-serif text-3xl md:text-4xl text-gray-400">+</span>
-      </div>
-
-      <p className="mt-4 text-base font-serif text-gray-900 leading-snug">
-        Area codes across every major U.S. market.
-      </p>
-
-      <div className="mt-6 flex flex-wrap gap-2">
-        {codes.map((c) => (
-          <span
-            key={c}
-            className="px-3 py-1.5 rounded-full bg-gray-100 text-gray-700 text-sm font-mono
-                       border border-black/5 hover:bg-[#0c1115] hover:text-[#95d9e8] transition-colors"
-          >
-            {c}
-          </span>
-        ))}
-        <span className="px-3 py-1.5 rounded-full bg-[#0c1115] text-[#95d9e8] text-sm font-mono">
-          +190
-        </span>
-      </div>
-    </article>
+      <p className="mt-3 font-serif text-base text-gray-900 leading-snug">{label}</p>
+      <p className="mt-1.5 text-[13px] text-gray-500 leading-relaxed max-w-[28ch]">{detail}</p>
+    </div>
   )
 }
 
@@ -310,17 +290,33 @@ function AreaCodesCard({ start }: { start: boolean }) {
 
 export function StatsCounter() {
   const { ref, inView } = useInView<HTMLElement>(0.2)
+  const recovered = useCountUp(60, inView, 1400)
+  const uptime = useCountUp(99.99, inView, 1500, 2)
+  const codes = useCountUp(200, inView, 1400)
+  const heroX = useCountUp(4, inView, 1400)
+
+  const areaCodes = ["212", "305", "415", "312", "404", "617", "713", "206", "702", "503", "646", "323"]
 
   return (
     <section
       id="s-stats"
       data-sec="stats"
       ref={ref}
-      className="relative py-24 md:py-32 px-[5%] bg-[#fafaf7]"
+      className="relative py-24 md:py-32 px-[5%] bg-[#fafaf7] overflow-hidden"
     >
+      {/* Aurora glow behind hero */}
+      <div
+        aria-hidden
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[900px] rounded-full opacity-50 blur-3xl pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(closest-side, rgba(26,188,217,0.18), rgba(26,188,217,0) 70%)",
+        }}
+      />
+
       <div className="relative max-w-[1240px] mx-auto">
         {/* Eyebrow + headline */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 md:mb-20">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 mb-5">
               <span className="h-px w-8 bg-gray-400" />
@@ -338,12 +334,118 @@ export function StatsCounter() {
           </p>
         </div>
 
-        {/* Bento grid */}
-        <div className="grid grid-cols-12 gap-4 md:gap-5 auto-rows-auto">
-          <HeadlineCard start={inView} />
-          <ConversationsCard start={inView} />
-          <UptimeCard start={inView} />
-          <AreaCodesCard start={inView} />
+        {/* Hero stage: phone compare with 4× anchor */}
+        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+          {/* Left phone — declined */}
+          <div className="lg:col-span-4 order-2 lg:order-1">
+            <PhoneFrame
+              variant="declined"
+              caller="Unknown"
+              subline="800 prefix · screened"
+              ringtag="Sent to voicemail"
+              start={inView}
+            />
+          </div>
+
+          {/* Center anchor — 4× */}
+          <div className="lg:col-span-4 order-1 lg:order-2 relative flex flex-col items-center justify-center text-center">
+            {/* Editorial frame lines */}
+            <div className="hidden lg:block absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-gray-300" />
+            <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gray-300/70" />
+
+            <div className="relative bg-[#fafaf7] px-4 py-6">
+              <div className="text-[10px] font-mono uppercase tracking-[2px] text-gray-500 mb-2">
+                Lift on answer rate
+              </div>
+              <div className="flex items-baseline justify-center">
+                <span
+                  className="font-serif text-[140px] md:text-[200px] leading-[0.85] text-gray-900 tabular-nums"
+                  style={{
+                    background: "linear-gradient(180deg, #0c1115 0%, #0f7a8e 100%)",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  {heroX}
+                </span>
+                <span className="font-serif text-6xl md:text-8xl text-[#0f7a8e]">×</span>
+              </div>
+              <p className="mt-4 font-serif italic text-lg md:text-xl text-gray-700 max-w-[24ch] mx-auto leading-snug">
+                from a screened ring to an opened conversation.
+              </p>
+              {/* Tiny arrow indicator */}
+              <div className="hidden lg:flex items-center justify-center gap-2 mt-6">
+                <span className="text-[10px] font-mono text-gray-400">15%</span>
+                <svg viewBox="0 0 60 10" className="w-16 h-2.5">
+                  <defs>
+                    <linearGradient id="arrowG" x1="0" x2="1">
+                      <stop offset="0%" stopColor="#9ca3af" />
+                      <stop offset="100%" stopColor="#0f7a8e" />
+                    </linearGradient>
+                  </defs>
+                  <line x1="0" y1="5" x2="55" y2="5" stroke="url(#arrowG)" strokeWidth="1.5" />
+                  <polygon points="55,1 60,5 55,9" fill="#0f7a8e" />
+                </svg>
+                <span className="text-[10px] font-mono text-[#0f7a8e]">60%</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right phone — answered */}
+          <div className="lg:col-span-4 order-3">
+            <PhoneFrame
+              variant="answered"
+              caller="Maya K."
+              subline="415 · San Francisco"
+              ringtag="Picked up in 2 rings"
+              start={inView}
+            />
+          </div>
+        </div>
+
+        {/* Editorial ledger — supporting stats */}
+        <div className="mt-20 md:mt-24 border-t border-gray-300">
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-300">
+            <LedgerEntry
+              index="01"
+              value={`+${recovered}`}
+              label="Extra conversations recovered weekly per rep."
+              detail="Same 200 dials baseline. The lift compounds without new headcount."
+            />
+            <LedgerEntry
+              index="02"
+              value={uptime.toFixed(2)}
+              suffix="%"
+              label="Uptime SLA on every routed call."
+              detail="Carrier-grade redundancy. Live status page. No quiet outages."
+            />
+            <LedgerEntry
+              index="03"
+              value={`${codes}+`}
+              label="Area codes across every major U.S. market."
+              detail="Local presence wherever your buyers actually pick up."
+            />
+          </div>
+        </div>
+
+        {/* Area code marquee */}
+        <div className="mt-12 flex flex-wrap items-center gap-2">
+          <span className="text-[10px] font-mono uppercase tracking-[2px] text-gray-500 mr-2">
+            Coverage sample
+          </span>
+          {areaCodes.map((c) => (
+            <span
+              key={c}
+              className="px-2.5 py-1 rounded-full bg-white border border-black/5 text-gray-700 text-[12px] font-mono
+                         hover:bg-[#0c1115] hover:text-[#95d9e8] transition-colors"
+            >
+              {c}
+            </span>
+          ))}
+          <span className="px-2.5 py-1 rounded-full bg-[#0c1115] text-[#95d9e8] text-[12px] font-mono">
+            +188 more
+          </span>
         </div>
 
         {/* Footnote */}

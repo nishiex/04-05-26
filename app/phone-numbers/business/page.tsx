@@ -1,14 +1,6 @@
 import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import {
-  PageHero,
-  NarrativeSection,
-  SectionHeading,
-  StatBar,
-  ValueGrid,
-  FeatureSplit,
-  ImageSlot,
-} from "@/components/page-parts"
+import { PageHero, SectionHeading, StatBar, ValueGrid, FeatureSplit, ImageSlot } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Shield, Clock, Smartphone, MessageSquare, PhoneForwarded } from "lucide-react"
@@ -81,15 +73,7 @@ export default function BusinessNumberPage() {
       />
 
       {/* ── Narrative opener ───────────────────────────────────── */}
-      <NarrativeSection
-        paragraphs={[
-          "She won the contract. Then the client called her personal mobile at 9 PM on a Sunday.",
-          "There was no boundary. Once it broke, it didn&apos;t rebuild.",
-          "A business phone number isn&apos;t about appearing more professional. It&apos;s about protecting the life you&apos;re trying to live while you grow what you&apos;re trying to build.",
-        ]}
-      />
-
-      {/* ── Stats ──────────────────────────────────────────────── */}
+{/* ── Stats ──────────────────────────────────────────────── */}
       <StatBar stats={STATS} />
 
       {/* ── Feature grid ───────────────────────────────────────── */}

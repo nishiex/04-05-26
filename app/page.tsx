@@ -8,7 +8,6 @@ import { LogoStrip } from "@/components/logo-strip"
 import { FeatureCards } from "@/components/feature-cards"
 import { ScrollStory } from "@/components/scroll-story"
 import { ValueProp } from "@/components/value-prop"
-import { StatsCounter } from "@/components/stats-counter"
 import { Testimonials } from "@/components/testimonials"
 import { Faq } from "@/components/faq"
 import { FinalCta } from "@/components/final-cta"
@@ -26,7 +25,6 @@ export default function Page() {
         <FeatureCards />
         <ValueProp />
         <ScrollStory />
-        <StatsCounter />
         <Testimonials />
         <Faq />
         <FinalCta />

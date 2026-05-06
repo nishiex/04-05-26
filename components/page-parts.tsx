@@ -20,13 +20,13 @@ interface ImageSlotProps {
 export function ImageSlot({ src, alt = "", aspect = "aspect-video", className = "" }: ImageSlotProps) {
   return (
     <div
-      className={`w-full ${aspect} rounded-2xl overflow-hidden border border-gray-100 bg-gray-50 relative ${className}`}
+      className={`w-[800] ${aspect} rounded-2xl overflow-hidden border border-gray-100 bg-gray-50 relative`}
     >
       {src ? (
         <img
           src={src}
           alt={alt}
-          className="w-full h-full object-cover"
+          className={` object-cover ${className}`}
         />
       ) : (
         /* Placeholder: drop in your real src prop to replace */
@@ -74,7 +74,7 @@ interface PageHeroProps {
   primaryCta?: { label: string; href: string }
   secondaryCta?: { label: string; href: string }
   /** Optional image for the hero right column */
-  image?: { src?: string; alt?: string }
+  image?: { src?: string; alt?: string; className?: string; aspect?: string }
   /** Accent color override for the eyebrow dot */
   accentClass?: string
 }
@@ -85,8 +85,8 @@ export function PageHero({
   const hasImage = image !== undefined
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20">
-      <div className={`grid gap-12 items-center ${hasImage ? "grid-cols-1 lg:grid-cols-[1fr_1fr]" : "grid-cols-1"}`}>
+    <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20">
+      <div className={`grid gap-10 items-center ${hasImage ? "grid-cols-1 lg:grid-cols-[4fr_8fr]" : "grid-cols-1"}`}>
         {/* Left: text */}
         <div className={hasImage ? "" : "max-w-[800px]"}>
           {eyebrow && (
@@ -95,7 +95,7 @@ export function PageHero({
               <p className="text-[11px] font-mono font-bold tracking-[2px] uppercase text-accent">{eyebrow}</p>
             </div>
           )}
-          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-gray-900 leading-[1.06] text-balance">
+          <h1 className="text-2xl sm:text-[28px] lg:text-[30px] font-medium tracking-tight text-gray-900 leading-[1.2] text-balance">
             {h1}
           </h1>
           <p className="mt-5 text-base sm:text-lg text-gray-500 leading-relaxed max-w-[520px]">
@@ -134,7 +134,12 @@ export function PageHero({
         {/* Right: image (only rendered when prop is provided) */}
         {hasImage && (
           <div className="w-full">
-            <ImageSlot src={image!.src} alt={image!.alt} aspect="aspect-[4/3]" />
+            <ImageSlot
+              src={image!.src}
+              alt={image!.alt}
+              aspect={image!.aspect ?? "aspect-[2/1]"}
+              className={image!.className ?? ""}
+            />
           </div>
         )}
       </div>
@@ -165,26 +170,6 @@ export function SectionHeading({
       <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#48cae0] text-balance leading-tight">{h2}</h2>
       {sub && <p className="mt-4 text-base text-gray-500 leading-relaxed max-w-[580px]">{sub}</p>}
     </div>
-  )
-}
-
-/* ─────────────────────────────────────────────────────────────────────
-   NARRATIVE SECTION
-   Full-width editorial text block — used for storytelling openers.
-───────────────────────────────────────────────────────────────────── */
-export function NarrativeSection({ paragraphs }: { paragraphs: string[] }) {
-  return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-      <div className="max-w-[640px] space-y-4 border-l-2 border-accent/20 pl-6">
-        {paragraphs.map((p, i) => (
-          <p
-            key={i}
-            className={`leading-relaxed ${i === 0 ? "text-xl font-semibold text-gray-900" : "text-base text-gray-600"}`}
-            dangerouslySetInnerHTML={{ __html: p }}
-          />
-        ))}
-      </div>
-    </section>
   )
 }
 

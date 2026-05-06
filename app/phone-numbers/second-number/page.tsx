@@ -1,14 +1,6 @@
 import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import {
-  PageHero,
-  NarrativeSection,
-  SectionHeading,
-  StatBar,
-  ValueGrid,
-  FeatureSplit,
-  ImageSlot,
-} from "@/components/page-parts"
+import { PageHero, SectionHeading, StatBar, ValueGrid, FeatureSplit, ImageSlot } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Smartphone, VolumeX, MessageSquare, Clock } from "lucide-react"

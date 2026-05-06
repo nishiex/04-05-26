@@ -1,6 +1,6 @@
 ﻿import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, NarrativeSection, DarkBand, InlineList } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, FeatureSplit, DarkBand, InlineList } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Brain, GitBranch, Clock, Users, Globe, Zap } from "lucide-react"
@@ -50,13 +50,7 @@ export default function RoutingPage() {
         { value: "Pro+", label: "CRM routing", note: "Starter gets basic ring groups" },
       ]} />
 
-      {/* Narrative opener */}
-      <NarrativeSection paragraphs={[
-        "The wrong agent handling the right call is just as bad as a missed call. Intelligent routing makes sure every caller lands exactly where they need to be — the first time.",
-        "Twiching's routing engine reads caller ID, time of day, CRM account data, and IVR keypress choices to make routing decisions in milliseconds. No guesswork. No transfers. No frustrated callers.",
-      ]} />
-
-      {/* Value cards */}
+{/* Value cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VALUES.map((v) => <ValueCard key={v.title} icon={v.icon} title={v.title} body={v.body} />)}

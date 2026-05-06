@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, NarrativeSection, DarkBand } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, DarkBand } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Phone, Globe, Zap, BarChart2, Shield, RefreshCw, MessageSquare, MapPin } from "lucide-react"
@@ -86,12 +86,7 @@ export default function TollFreeNumbersPage() {
         { value: "Free",   label: "Number porting",      note: "keep your existing number" },
       ]} />
 
-      <NarrativeSection paragraphs={[
-        "Local numbers tell customers where you are. Toll-free numbers tell them you're serious. No barrier to call, no geographic implication — just a professional line that works everywhere.",
-        "Twiching toll-free numbers come with the same routing, analytics, and SMS capabilities as every other number on the platform. One system, all your numbers.",
-      ]} />
-
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <SectionHeading eyebrow="What's included" h2="More than just a number" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           {FEATURES.map((f) => <ValueCard key={f.title} icon={f.icon} title={f.title} body={f.body} />)}

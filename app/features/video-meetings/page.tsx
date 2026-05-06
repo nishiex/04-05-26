@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, NarrativeSection, DarkBand, FeatureSplit } from "@/components/page-parts"
+import { PageHero, SectionHeading, ValueCard, RelatedCards, StatBar, DarkBand, FeatureSplit } from "@/components/page-parts"
 import { FinalCta } from "@/components/final-cta"
 import { Faq } from "@/components/faq"
 import { Video, Users, MonitorSmartphone, Share2, Lock, Calendar, Mic, LayoutGrid } from "lucide-react"
@@ -76,7 +76,11 @@ export default function VideoMeetingsPage() {
         trustItems={["No downloads for guests", "Up to 200 participants", "AI summaries", "E2E encrypted"]}
         primaryCta={{ label: "Start Free Trial", href: "/pricing" }}
         secondaryCta={{ label: "Talk to sales", href: "/contact" }}
-        image={{ alt: "Twiching video meeting with screen sharing and participant grid" }}
+        image={{
+          src: "/ChatGPTImageMay6202605_04_16PM.png",
+          alt: "Twiching video meeting — Quarterly planning sync with participant grid and screen share",
+          className:" h-[410]  contain object-cover object-top  "
+        }}
       />
 
       <StatBar stats={[
@@ -86,12 +90,7 @@ export default function VideoMeetingsPage() {
         { value: "E2E",   label: "Encrypted",          note: "audio, video & chat" },
       ]} />
 
-      <NarrativeSection paragraphs={[
-        "Most teams use one tool for calls, another for video, and a third for meeting notes. Every handoff loses context and costs time.",
-        "Twiching Video Meetings lives inside your phone system — so every meeting is already connected to your contacts, call history, and CRM records. One less tool. Full context, every time.",
-      ]} />
-
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+<section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <SectionHeading eyebrow="What's included" h2="Everything your team needs in a meeting" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           {FEATURES.map((f) => <ValueCard key={f.title} icon={f.icon} title={f.title} body={f.body} />)}

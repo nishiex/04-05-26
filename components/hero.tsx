@@ -20,49 +20,132 @@ import {
   Bot,
   Hash,
 } from "lucide-react"
-import { CallFlowStory } from "@/components/call-flow-story"
+import dynamic from "next/dynamic"
+
+const OrbitingSkills = dynamic(() => import("@/components/ui/orbiting-skills"), {
+  ssr: false,
+  loading: () => <div className="w-[min(100vw-40px,450px)] aspect-square" />,
+})
 
 /* ─── Hero ─────────────────────────────────────────────────────────────────── */
 export function Hero() {
   const rootRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if (!rootRef.current) return
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
-      tl.from(".hero-eyebrow", { y: 16, opacity: 0, duration: 0.55 })
-        .from(
-          ".hero-word",
-          { y: 48, opacity: 0, duration: 0.9, stagger: 0.055, ease: "power4.out" },
-          "-=0.25",
-        )
-        .from(".hero-sub", { y: 16, opacity: 0, duration: 0.5 }, "-=0.55")
-        .from(".hero-cta", { y: 14, opacity: 0, duration: 0.45 }, "-=0.35")
-        .from(
-          ".hero-chip",
-          { y: 10, opacity: 0, scale: 0.92, duration: 0.35, stagger: 0.05 },
-          "-=0.25",
-        )
-    }, rootRef)
-    return () => ctx.revert()
-  }, [])
-
   const titleLine1 = ["Your", "business", "phone."]
   const titleLine2 = ["Built", "for", "how", "you", "actually", "work."]
+
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root) return
+
+    /* Cursor parallax — subtle drift on the orbs */
+    const orbA = root.querySelector<HTMLElement>('[data-orb="a"]')
+    const orbB = root.querySelector<HTMLElement>('[data-orb="b"]')
+    const ax = orbA ? gsap.quickTo(orbA, "x", { duration: 1.2, ease: "power3.out" }) : null
+    const ay = orbA ? gsap.quickTo(orbA, "y", { duration: 1.2, ease: "power3.out" }) : null
+    const bx = orbB ? gsap.quickTo(orbB, "x", { duration: 1.6, ease: "power3.out" }) : null
+    const by = orbB ? gsap.quickTo(orbB, "y", { duration: 1.6, ease: "power3.out" }) : null
+
+    const onMove = (e: MouseEvent) => {
+      const r = root.getBoundingClientRect()
+      const cx = (e.clientX - r.left) / r.width - 0.5
+      const cy = (e.clientY - r.top) / r.height - 0.5
+      ax?.(cx * 28); ay?.(cy * 18)
+      bx?.(cx * -36); by?.(cy * -22)
+    }
+    root.addEventListener("mousemove", onMove)
+
+    const ctx = gsap.context(() => {
+      /* Initial states */
+      gsap.set(".hero-pulse", { scaleX: 0, transformOrigin: "0% 50%" })
+      gsap.set(".hero-eyebrow", { clipPath: "inset(0% 100% 0% 0%)", opacity: 1 })
+      gsap.set(".hero-eyebrow > *", { opacity: 0, y: 4 })
+      gsap.set(".hero-line-1 .hero-word", { y: 36, opacity: 0, filter: "blur(8px)" })
+      gsap.set(".hero-line-2 .hero-word", { y: 44, rotate: 3, opacity: 0, filter: "blur(8px)" })
+      gsap.set(".hero-sub", { y: 18, opacity: 0, filter: "blur(6px)" })
+      gsap.set(".hero-cta", { y: 16, opacity: 0, scale: 0.94 })
+      gsap.set(".hero-cta-arrow", { x: -8, opacity: 0 })
+      gsap.set(".hero-right", { y: 48, opacity: 0, filter: "blur(12px)" })
+
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
+
+      /* Signal pulse — sweeps across the top edge once */
+      tl.to(".hero-pulse", { scaleX: 1, duration: 0.85, ease: "power2.inOut" }, 0)
+        .to(
+          ".hero-pulse",
+          { scaleX: 0, transformOrigin: "100% 50%", duration: 0.55, ease: "power2.in" },
+          ">-0.05",
+        )
+
+      /* Eyebrow — clip-path wipe, then content settles */
+      tl.to(".hero-eyebrow", { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power3.out" }, 0.25)
+        .to(".hero-eyebrow > *", { opacity: 1, y: 0, duration: 0.4, stagger: 0.06 }, 0.55)
+
+      /* H1 line 1 — words rise + defocus */
+      tl.to(
+        ".hero-line-1 .hero-word",
+        { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.95, stagger: 0.07, ease: "power4.out" },
+        0.5,
+      )
+
+      /* H1 line 2 — words drift in with slight rotate */
+      tl.to(
+        ".hero-line-2 .hero-word",
+        { y: 0, rotate: 0, opacity: 1, filter: "blur(0px)", duration: 0.85, stagger: 0.06, ease: "power3.out" },
+        0.95,
+      )
+
+      /* Subhead — defocus → focus */
+      tl.to(".hero-sub", { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.6 }, 1.35)
+
+      /* CTA — overshoot in, then arrow tracks across */
+      tl.to(".hero-cta", { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.6)" }, 1.5)
+        .to(".hero-cta-arrow", { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 1.7)
+
+      /* Right column — defocus lift */
+      tl.to(".hero-right", { y: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" }, 0.85)
+
+      /* Ambient orb drift — runs forever, opposite phases */
+      gsap.to('[data-orb="a"]', {
+        xPercent: 5, yPercent: 4,
+        duration: 14, ease: "sine.inOut", repeat: -1, yoyo: true,
+      })
+      gsap.to('[data-orb="b"]', {
+        xPercent: -7, yPercent: -5,
+        duration: 18, ease: "sine.inOut", repeat: -1, yoyo: true,
+      })
+    }, rootRef)
+
+    return () => {
+      root.removeEventListener("mousemove", onMove)
+      ctx.revert()
+    }
+  }, [])
 
   return (
     <section
       ref={rootRef}
       id="s-hero"
       data-sec="hero"
-      className="relative overflow-hidden pt-12 pb-14 md:pt-16 md:pb-20 px-[5%]"
+      className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-20 px-[5%]"
     >
+      {/* Top signal pulse */}
+      <div
+        aria-hidden="true"
+        className="hero-pulse pointer-events-none absolute top-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(26,188,217,0) 0%, rgba(26,188,217,0.6) 50%, rgba(26,188,217,0) 100%)",
+        }}
+      />
+
       {/* Light rays + orbs */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="hero-ray hero-ray--a" />
         <div className="hero-ray hero-ray--b" />
         <div className="hero-ray hero-ray--c" />
         <div
+          data-orb="a"
           className="hero-orb"
           style={{
             width: 520,
@@ -74,6 +157,7 @@ export function Hero() {
           }}
         />
         <div
+          data-orb="b"
           className="hero-orb"
           style={{
             width: 380,
@@ -90,64 +174,63 @@ export function Hero() {
 
           {/* ── Left column: text content ── */}
           <div className="flex-1 flex flex-col items-start text-left lg:max-w-[520px]">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            <div
               className="hero-eyebrow inline-flex items-center gap-2 bg-white/70 backdrop-blur border border-[#95d9e8]/50 text-accent text-xs font-medium font-mono px-4 py-[6px] rounded-full mb-7 shadow-[0_1px_0_rgba(255,255,255,0.8)_inset,0_6px_20px_-12px_rgba(26,188,217,0.4)]"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
               </span>
-              CLOUD PHONE · VOICE · SMS · AI
-            </motion.div>
+              <span>CLOUD PHONE · VOICE · SMS · AI</span>
+            </div>
 
-            <h1 className="hero-title font-serif text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.06] tracking-tighter2 mb-6 text-balance">
-              <span className="block">
+            <h1 className="hero-title font-serif text-4xl md:text-5xl lg:text-[52px] font-normal leading-[1.06] tracking-tight mb-6 text-balance">
+              <span className="hero-line-1 block">
                 {titleLine1.map((w, i) => (
-                  <span key={`a-${i}`} className="hero-word inline-block mr-[0.18em]">
+                  <span
+                    key={`a-${i}`}
+                    className="hero-word inline-block mr-[0.18em] will-change-transform"
+                  >
                     {w}
                   </span>
                 ))}
               </span>
-              <span className="block text-accent italic">
+              <span className="hero-line-2 block italic">
                 {titleLine2.map((w, i) => (
-                  <span key={`b-${i}`} className="hero-word inline-block mr-[0.18em]">
+                  <span
+                    key={`b-${i}`}
+                    className="hero-word inline-block mr-[0.18em] will-change-transform"
+                  >
                     {w}
                   </span>
                 ))}
               </span>
             </h1>
 
-            <p className="hero-sub text-lg text-gray-500 mb-5 leading-relaxed max-w-[480px]">
+            <p className="hero-sub text-lg text-gray-500 mb-6 leading-relaxed max-w-[480px]">
               Phone numbers, voice, SMS and AI on one platform. Carrier-grade routing, built-in
               compliance, one bill. See it live on a 20-minute call with our team.
             </p>
 
-
-            <div className="hero-cta flex mb-5">
-              <motion.a
+            <div className="mb-5">
+              <a
                 href="#"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className="group inline-flex items-center gap-2 bg-accent text-white text-[15px] font-medium font-mono pl-7 pr-3 py-2 rounded-full hover:bg-[color:var(--accent-dark)] shadow-[0_8px_24px_-6px_rgba(26,188,217,0.45)]"
+                className="hero-cta group inline-flex items-center gap-2 bg-accent text-white text-[15px] font-medium font-mono pl-7 pr-3 py-2 rounded-full shadow-[0_8px_24px_-6px_rgba(26,188,217,0.45)] transition-[transform,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--accent-dark)] active:translate-y-0 active:scale-[0.98]"
               >
                 Request a Demo
-                <span className="grid place-items-center h-8 w-8 rounded-full bg-white/15 ring-1 ring-inset ring-white/25 transition-transform group-hover:translate-x-0.5">
-                  <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
+                <span className="grid place-items-center h-8 w-8 rounded-full bg-white/15 ring-1 ring-inset ring-white/25 overflow-hidden">
+                  <ArrowRight
+                    className="hero-cta-arrow h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                    strokeWidth={2.2}
+                  />
                 </span>
-              </motion.a>
+              </a>
             </div>
-
-           
-
           </div>
 
           {/* ── Right column: Call flow story ── */}
-          <div className="flex-1 w-full min-w-0 flex items-center justify-center self-stretch">
-            <CallFlowStory />
+          <div className="hero-right flex-1 w-full min-w-0 flex items-center justify-center self-stretch">
+            <OrbitingSkills />
           </div>
 
         </div>
