@@ -20,7 +20,7 @@ export function ShaderGradientSection() {
         const gradientOptions = {
           pixelDensity: 1.5,
           preset: 'interstella',
-          colors: ["#73bfc4","#ffffff","#dff7f9"],
+          colors: ['#73bfc4', '#ffffff', '#dff7f9'],
           chromaticAberration: true,
           chromaticAberrationStrength: 0.016,
           cameraZoom: 15.49,
