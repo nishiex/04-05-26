@@ -21,7 +21,7 @@ import {
   Hash,
 } from "lucide-react"
 import dynamic from "next/dynamic"
-import { CinematicHeroBackground } from "@/components/cinematic-hero-background"
+import { ShaderGradientHero } from "@/components/shader-gradient-hero"
 
 const OrbitingSkills = dynamic(() => import("@/components/ui/orbiting-skills"), {
   ssr: false,
@@ -132,11 +132,8 @@ export function Hero() {
       data-sec="hero"
       className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-20 px-[5%]"
     >
-      {/* Cinematic 3D background */}
-      <CinematicHeroBackground 
-        selectedEnvironment="lobby" 
-        animationTimeline={timelineRef.current || undefined}
-      />
+      {/* ShaderGradient animated background */}
+      <ShaderGradientHero />
 
       {/* Top signal pulse */}
       <div
