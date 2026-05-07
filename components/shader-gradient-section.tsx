@@ -6,10 +6,12 @@ import {
   ShaderGradientInput,
   ShaderGradientPresetName,
 } from '@shader-gradient/core'
+import { TimelineAnimation } from '@/components/ui/timeline-animation'
 
 export function ShaderGradientSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const gradientRef = useRef<ShaderGradient | null>(null)
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -49,12 +51,24 @@ export function ShaderGradientSection() {
   }, [])
 
   return (
-    <section className="relative w-full h-[900px] md:h-[700px] lg:h-[800px] overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-[900px] md:h-[700px] lg:h-[800px] overflow-hidden">
       <div
         ref={containerRef}
         id="shader-gradient"
         className="absolute inset-0 w-full h-full"
       />
+      {/* Centered button overlay */}
+      <div className="absolute inset-0 flex items-center justify-center z-10">
+        <TimelineAnimation
+          once={true}
+          as="button"
+          animationNum={6}
+          timelineRef={sectionRef}
+          className="cursor-pointer border border-white/20 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full font-medium text-lg text-white"
+        >
+          More about us
+        </TimelineAnimation>
+      </div>
     </section>
   )
 }
