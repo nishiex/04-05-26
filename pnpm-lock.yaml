@@ -98,6 +98,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.24(postcss@8.5.6)
+      autoskills:
+        specifier: ^0.3.6
+        version: 0.3.6
       chart.js:
         specifier: ^4.5.1
         version: 4.5.1
@@ -1284,6 +1287,11 @@ packages:
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
+
+  autoskills@0.3.6:
+    resolution: {integrity: sha512-yNcj7Y/USPyJINxCWDaVVu17UaFokWgGtpX57PQUOA4i3s3vIDezaGZ/64KyMGb5CsLTvMb/L8WOX6R/ozhWIg==}
+    engines: {node: '>=22.6.0'}
+    hasBin: true
 
   baseline-browser-mapping@2.9.19:
     resolution: {integrity: sha512-ipDqC8FrAl/76p2SSWKSI+H9tFwm7vYqXQrItCuiVPt26Km0jS+NzSsBWAaBusvSbQcfJG+JitdMm+wZAgTYqg==}
@@ -2818,6 +2826,8 @@ snapshots:
       picocolors: 1.1.1
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
+
+  autoskills@0.3.6: {}
 
   baseline-browser-mapping@2.9.19: {}
 
