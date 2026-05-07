@@ -24,7 +24,7 @@ export function ShaderGradientSection() {
           pixelDensity: 1.5,
           preset: 'interstella' as ShaderGradientPresetName,
           color1: '#3fe3ee',
-          color2: '#000',
+          color2: '#ffffff',
           color3: '#d6f3f5',
           cameraZoom: 20.00,
           // ❌ remove chromaticAberration and chromaticAberrationStrength
