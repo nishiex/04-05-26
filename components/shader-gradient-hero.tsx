@@ -15,6 +15,8 @@ export function ShaderGradientHero() {
         pixelDensity: 1.5,
         preset: 'interstella',
         colors: ['#1abcd9', '#b2e8f0', '#ffffff', '#ffffff'],
+        cDistance: 2.53,
+        cameraZoom: 44.45,
       })
 
       return () => {
