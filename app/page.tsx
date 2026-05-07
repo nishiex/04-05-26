@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import { AnnouncementBar } from "@/components/announcement-bar"
 import { MegaNav } from "@/components/mega-nav"
-import { Hero } from "@/components/hero"
 import { LogoStrip } from "@/components/logo-strip"
 import { FeatureCards } from "@/components/feature-cards"
 import { ScrollStory } from "@/components/scroll-story"
@@ -21,7 +20,6 @@ export default function Page() {
       <AnnouncementBar />
       <MegaNav />
       <main >
-        <Hero />
         <ShaderGradientSection />
         <LogoStrip />
         <FeatureCards />
