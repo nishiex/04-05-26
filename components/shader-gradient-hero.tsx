@@ -18,17 +18,19 @@ export function ShaderGradientHero() {
       <ShaderGradient
         animate="on"
         type="plane"
-        uSpeed={0.5}
-        uStrength={2}
-        uFrequency={4}
+        uSpeed={0.72}
+        uStrength={0.7}
+        uDensity={0.9}
         cDistance={2.53}
-        cameraZoom={44.45}
-        cPolarAngle={90}
-        cAzimuthAngle={0}
+        cameraZoom={72.1}
+        cPolarAngle={128}
+        cAzimuthAngle={83}
         color1="#1abcd9"
         color2="#b2e8f0"
         color3="#ffffff"
-        brightness={1.2}
+        color4="#ffffff"
+        grainBlending={0.32}
+        toggleAxis={true}
         wireframe={false}
         shader="defaults"
       />

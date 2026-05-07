@@ -101,9 +101,9 @@ importers:
       '@react-three/postprocessing':
         specifier: ^3.0.4
         version: 3.0.4(@react-three/fiber@9.6.1(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(three@0.184.0))(@types/three@0.184.1)(react@19.2.4)(three@0.184.0)
-      '@shader-gradient/core':
-        specifier: ^0.2.0
-        version: 0.2.0
+      '@shadergradient/react':
+        specifier: ^2.4.20
+        version: 2.4.20(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@vercel/analytics':
         specifier: 1.6.1
         version: 1.6.1(next@16.2.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
@@ -113,6 +113,9 @@ importers:
       autoskills:
         specifier: ^0.3.6
         version: 0.3.6
+      camera-controls:
+        specifier: ^3.1.2
+        version: 3.1.2(three@0.184.0)
       chart.js:
         specifier: ^4.5.1
         version: 4.5.1
@@ -185,6 +188,9 @@ importers:
       three:
         specifier: ^0.184.0
         version: 0.184.0
+      three-stdlib:
+        specifier: ^2.36.1
+        version: 2.36.1(three@0.184.0)
       vaul:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1190,8 +1196,11 @@ packages:
       react: ^19.0
       three: '>= 0.156.0'
 
-  '@shader-gradient/core@0.2.0':
-    resolution: {integrity: sha512-eeVhpbGcS/lws/jtyudOI2bf3GMz8YC7Xnzlo26WAnYag3+mzVecJcbKVGTiHAKo8jk56ceMGasBckY0FNbJNg==}
+  '@shadergradient/react@2.4.20':
+    resolution: {integrity: sha512-MVYvYgTHK3d36C2jNKzt4OzWeyNyc/bWI0zKRyv5EgI2hmUee8nD0cmuNX9X1lw1RCcuof6n1Rnj63jWepZHJA==}
+    peerDependencies:
+      react: ^18.2.0 || ^19.0.0
+      react-dom: ^18.2.0 || ^19.0.0
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -1416,11 +1425,6 @@ packages:
 
   buffer@6.0.3:
     resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
-
-  camera-controls@2.10.1:
-    resolution: {integrity: sha512-KnaKdcvkBJ1Irbrzl8XD6WtZltkRjp869Jx8c0ujs9K+9WD+1D7ryBsCiVqJYUqt6i/HR5FxT7RLASieUD+Q5w==}
-    peerDependencies:
-      three: '>=0.126.1'
 
   camera-controls@3.1.2:
     resolution: {integrity: sha512-xkxfpG2ECZ6Ww5/9+kf4mfg1VEYAoe9aDSY+IwF0UEs7qEzwy0aVRfs2grImIECs/PoBtWFrh7RXsQkwG922JA==}
@@ -2025,9 +2029,6 @@ packages:
     resolution: {integrity: sha512-XyGQrFmNQ5O/IoKm556ftwKsBg11TIb301MB5dWNicziQBEs2g3gtOYIf7pFiLa0zI2gUwhtCjv9fmjnxKZ1Cg==}
     peerDependencies:
       three: '>=0.128.0'
-
-  three@0.183.2:
-    resolution: {integrity: sha512-di3BsL2FEQ1PA7Hcvn4fyJOlxRRgFYBpMTcyOgkwJIaDOdJMebEFPA+t98EvjuljDx4hNulAGwF6KIjtwI5jgQ==}
 
   three@0.184.0:
     resolution: {integrity: sha512-wtTRjG92pM5eUg/KuUnHsqSAlPM296brTOcLgMRqEeylYTh/CdtvKUvCyyCQTzFuStieWxvZb8mVTMvdPyUpxg==}
@@ -3102,10 +3103,10 @@ snapshots:
     transitivePeerDependencies:
       - '@types/three'
 
-  '@shader-gradient/core@0.2.0':
+  '@shadergradient/react@2.4.20(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
-      camera-controls: 2.10.1(three@0.183.2)
-      three: 0.183.2
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
 
   '@swc/helpers@0.5.15':
     dependencies:
@@ -3286,10 +3287,6 @@ snapshots:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
-
-  camera-controls@2.10.1(three@0.183.2):
-    dependencies:
-      three: 0.183.2
 
   camera-controls@3.1.2(three@0.184.0):
     dependencies:
@@ -3826,8 +3823,6 @@ snapshots:
       fflate: 0.6.10
       potpack: 1.0.2
       three: 0.184.0
-
-  three@0.183.2: {}
 
   three@0.184.0: {}
 
