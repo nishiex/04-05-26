@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
@@ -21,6 +21,7 @@ import {
   Hash,
 } from "lucide-react"
 import dynamic from "next/dynamic"
+import { CinematicHeroBackground } from "@/components/cinematic-hero-background"
 
 const OrbitingSkills = dynamic(() => import("@/components/ui/orbiting-skills"), {
   ssr: false,
@@ -30,6 +31,7 @@ const OrbitingSkills = dynamic(() => import("@/components/ui/orbiting-skills"), 
 /* ─── Hero ─────────────────────────────────────────────────────────────────── */
 export function Hero() {
   const rootRef = useRef<HTMLDivElement>(null)
+  const timelineRef = useRef<gsap.core.Timeline | null>(null)
 
   const titleLine1 = ["Your", "business", "phone."]
   const titleLine2 = ["Built", "for", "how", "you", "actually", "work."]
@@ -68,6 +70,7 @@ export function Hero() {
       gsap.set(".hero-right", { y: 48, opacity: 0, filter: "blur(12px)" })
 
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
+      timelineRef.current = tl
 
       /* Signal pulse — sweeps across the top edge once */
       tl.to(".hero-pulse", { scaleX: 1, duration: 0.85, ease: "power2.inOut" }, 0)
@@ -129,10 +132,16 @@ export function Hero() {
       data-sec="hero"
       className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-20 px-[5%]"
     >
+      {/* Cinematic 3D background */}
+      <CinematicHeroBackground 
+        selectedEnvironment="lobby" 
+        animationTimeline={timelineRef.current || undefined}
+      />
+
       {/* Top signal pulse */}
       <div
         aria-hidden="true"
-        className="hero-pulse pointer-events-none absolute top-0 left-0 right-0 h-px"
+        className="hero-pulse pointer-events-none absolute top-0 left-0 right-0 h-px z-20"
         style={{
           background:
             "linear-gradient(90deg, rgba(26,188,217,0) 0%, rgba(26,188,217,0.6) 50%, rgba(26,188,217,0) 100%)",
@@ -140,7 +149,7 @@ export function Hero() {
       />
 
       {/* Light rays + orbs */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden z-10">
         <div className="hero-ray hero-ray--a" />
         <div className="hero-ray hero-ray--b" />
         <div className="hero-ray hero-ray--c" />
@@ -169,7 +178,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="max-w-[1280px] mx-auto relative">
+      <div className="max-w-[1280px] mx-auto relative z-30">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
           {/* ── Left column: text content ── */}
