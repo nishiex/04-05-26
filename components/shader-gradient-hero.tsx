@@ -1,41 +1,37 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { ShaderGradient } from '@shader-gradient/core'
+import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react'
 
 export function ShaderGradientHero() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const gradientRef = useRef<ShaderGradient | null>(null)
-
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    try {
-      gradientRef.current = new ShaderGradient(containerRef.current, {
-        pixelDensity: 1.5,
-        preset: 'interstella',
-        colors: ['#1abcd9', '#b2e8f0', '#ffffff', '#ffffff'],
-        cDistance: 2.53,
-        cameraZoom: 44.45,
-      })
-
-      return () => {
-        if (gradientRef.current) {
-          gradientRef.current.dispose()
-          gradientRef.current = null
-        }
-      }
-    } catch (error) {
-      console.error('[v0] ShaderGradient initialization error:', error)
-    }
-  }, [])
-
   return (
-    <div
-      ref={containerRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ zIndex: 0 }}
-      aria-hidden="true"
-    />
+    <ShaderGradientCanvas
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -10,
+      }}
+      pixelDensity={1.5}
+      fov={45}
+    >
+      <ShaderGradient
+        animate="on"
+        type="plane"
+        uSpeed={0.5}
+        uStrength={2}
+        uFrequency={4}
+        cDistance={2.53}
+        cameraZoom={44.45}
+        cPolarAngle={90}
+        cAzimuthAngle={0}
+        color1="#1abcd9"
+        color2="#b2e8f0"
+        color3="#ffffff"
+        brightness={1.2}
+        wireframe={false}
+        shader="defaults"
+      />
+    </ShaderGradientCanvas>
   )
 }
