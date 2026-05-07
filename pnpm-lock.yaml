@@ -104,6 +104,9 @@ importers:
       '@shader-gradient/core':
         specifier: ^0.2.0
         version: 0.2.0
+      '@shader-gradient/react':
+        specifier: ^0.2.0
+        version: 0.2.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@shadergradient/react':
         specifier: ^2.4.20
         version: 2.4.20(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1201,6 +1204,12 @@ packages:
 
   '@shader-gradient/core@0.2.0':
     resolution: {integrity: sha512-eeVhpbGcS/lws/jtyudOI2bf3GMz8YC7Xnzlo26WAnYag3+mzVecJcbKVGTiHAKo8jk56ceMGasBckY0FNbJNg==}
+
+  '@shader-gradient/react@0.2.0':
+    resolution: {integrity: sha512-NhkC+i9/Tg9obGtjmXgj8hMKLY/rBWwJv+pA/U5fiSRXuOcdu+3FQQyZfRn4hxNt144y/KAxd2lh3sFz6S1GfA==}
+    peerDependencies:
+      react: ^18.2.0 || ^19.0.0
+      react-dom: ^18.2.0 || ^19.0.0
 
   '@shadergradient/react@2.4.20':
     resolution: {integrity: sha512-MVYvYgTHK3d36C2jNKzt4OzWeyNyc/bWI0zKRyv5EgI2hmUee8nD0cmuNX9X1lw1RCcuof6n1Rnj63jWepZHJA==}
@@ -3121,6 +3130,12 @@ snapshots:
     dependencies:
       camera-controls: 2.10.1(three@0.183.2)
       three: 0.183.2
+
+  '@shader-gradient/react@0.2.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@shader-gradient/core': 0.2.0
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
 
   '@shadergradient/react@2.4.20(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:

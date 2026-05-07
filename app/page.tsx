@@ -12,6 +12,7 @@ import { Testimonials } from "@/components/testimonials"
 import { Faq } from "@/components/faq"
 import { FinalCta } from "@/components/final-cta"
 import { Footer } from "@/components/footer"
+import { ShaderGradientSection } from "@/components/shader-gradient-section"
 
 export default function Page() {
   
@@ -21,6 +22,7 @@ export default function Page() {
       <MegaNav />
       <main >
         <Hero />
+        <ShaderGradientSection />
         <LogoStrip />
         <FeatureCards />
         <ValueProp />
