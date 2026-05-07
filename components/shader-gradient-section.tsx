@@ -1,10 +1,11 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { ShaderGradient, ShaderGradientInput, ShaderGradientPresetName } from '@shader-gradient/core'
 
 export function ShaderGradientSection() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const gradientRef = useRef<any>(null)
+  const gradientRef = useRef<ShaderGradient | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -13,18 +14,16 @@ export function ShaderGradientSection() {
 
     async function init() {
       try {
-        const { ShaderGradient } = await import('@shader-gradient/core')
-
-        if (disposed || !containerRef.current) return
-
-        const gradientOptions = {
+        const gradientOptions: Partial<ShaderGradientInput> = {
           pixelDensity: 1.5,
-          preset: 'interstella',
+          preset: 'interstella' as ShaderGradientPresetName, // ✅ cast to union type
           colors: ['#73bfc4', '#ffffff', '#dff7f9'],
           chromaticAberration: true,
           chromaticAberrationStrength: 0.016,
           cameraZoom: 15.49,
         }
+
+        if (disposed || !containerRef.current) return
 
         gradientRef.current = new ShaderGradient(containerRef.current, gradientOptions)
       } catch (error) {
