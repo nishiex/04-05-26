@@ -4,17 +4,27 @@ import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react'
 
 export function ShaderGradientHero() {
   return (
-    <ShaderGradientCanvas
+    <div
       style={{
         position: 'absolute',
-        inset: 0,
+        top: 0,
+        left: 0,
+        right: 0,
         width: '100%',
         height: '100%',
-        zIndex: -10,
+        zIndex: 10,
       }}
-      pixelDensity={1.5}
-      fov={45}
     >
+      <ShaderGradientCanvas
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+        }}
+        pixelDensity={1.5}
+        fov={45}
+      >
       <ShaderGradient
         animate="on"
         type="plane"
@@ -34,6 +44,7 @@ export function ShaderGradientHero() {
         wireframe={false}
         shader="defaults"
       />
-    </ShaderGradientCanvas>
+      </ShaderGradientCanvas>
+    </div>
   )
 }

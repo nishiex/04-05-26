@@ -130,7 +130,7 @@ export function Hero() {
       ref={rootRef}
       id="s-hero"
       data-sec="hero"
-      className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-20 px-[5%]"
+      className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-20 px-[5%] min-h-screen"
     >
       {/* ShaderGradient animated background */}
       <ShaderGradientHero />
