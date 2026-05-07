@@ -24,7 +24,7 @@ export function ShaderGradientSection() {
           color1: '#3fe3ee',
           color2: '#ffffff',
           color3: '#d6f3f5',
-          cameraZoom: 15.49,
+          cameraZoom: 17.49,
           // ❌ remove chromaticAberration and chromaticAberrationStrength
           // If you want that effect, it’s controlled internally by the preset/shader
         }
