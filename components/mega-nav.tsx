@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState, useRef, useCallback } from "react"
 import {
@@ -420,7 +420,7 @@ export function MegaNav() {
       </a>
 
       <header
-        className="sticky top-0 z-30 bg-white border-b border-[#E5E5E5]"
+        className="sticky top-0 z-30 bg-white/10 backdrop-blur-md border-b border-white/10"
         onMouseLeave={handleMouseLeave}
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[5%] h-16 flex items-center justify-between gap-6">
