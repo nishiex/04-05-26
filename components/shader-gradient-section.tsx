@@ -23,6 +23,7 @@ export function ShaderGradientSection() {
           colors: ['#73bfc4', '#ffffff', '#dff7f9'],
           chromaticAberration: true,
           chromaticAberrationStrength: 0.016,
+          cameraZoom: 15.49,
         }
 
         gradientRef.current = new ShaderGradient(containerRef.current, gradientOptions)
