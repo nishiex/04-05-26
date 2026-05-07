@@ -49,7 +49,7 @@ export function ShaderGradientSection() {
   }, [])
 
   return (
-    <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden">
+    <section className="relative w-full h-[900px] md:h-[700px] lg:h-[800px] overflow-hidden">
       <div
         ref={containerRef}
         id="shader-gradient"
